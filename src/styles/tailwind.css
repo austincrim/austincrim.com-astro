@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.prose,
+.about {
+  font-family: 'Merriweather', sans-serif;
+}
+
+.link {
+  @apply text-blue-600 underline font-semibold transition-colors duration-150;
+}
+
+.link:hover {
+  @apply text-blue-500;
+}
+
+.link:visited {
+  @apply text-violet-700;
+}
+
+.link:visited:hover {
+  @apply text-violet-500;
+}
+
+:root {
+  --color-base: 255 255 255;             /* white */
+  --color-text-base: 0 0 0;              /* black */
+  --color-off-base: 249 250 251;         /* gray-50 */
+  --color-text-muted: 55 65 81;          /* gray-700 */
+  --color-text-muted-hover: 107 114 128; /* gray-500 */
+  --color-primary: 30 64 175;            /* blue-800 */
+  --color-secondary: 96 165 250;         /* blue-400 */
+}
+
+.theme-gradient {
+  --tw-gradient-stops: rgb(var(--color-secondary)), rgb(var(--color-primary));
+  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
+}
+
+.appearance a {
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--color-primary));
+}
+

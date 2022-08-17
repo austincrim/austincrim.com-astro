@@ -1,0 +1,26 @@
+{
+  "name": "@example/basics",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "devDependencies": {
+    "@astrojs/svelte": "^1.0.0",
+    "@astrojs/tailwind": "^1.0.0",
+    "@tailwindcss/typography": "^0.5.4",
+    "astro": "^1.0.6",
+    "svelte": "^3.46.4"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.1.1",
+    "dotenv": "^16.0.1",
+    "highlight.js": "^11.6.0",
+    "marked": "^4.0.18",
+    "notion-to-md": "^2.5.5"
+  }
+}
