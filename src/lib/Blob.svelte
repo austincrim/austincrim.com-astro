@@ -9,7 +9,9 @@
 
   function moveBlob() {
     if (blob) {
-      let parentBounds = blob.parentElement.getBoundingClientRect()
+      let parentBounds = document
+        .querySelector('[data-blob-container]')
+        .getBoundingClientRect()
       let bounds = blob.getBoundingClientRect()
       let leftPx = +blob.style.left.split('px')[0]
       let topPx = +blob.style.top.split('px')[0]
@@ -35,7 +37,9 @@
   }
 
   onMount(() => {
-    let parentBounds = blob.parentElement.getBoundingClientRect()
+    let parentBounds = document
+      .querySelector('[data-blob-container]')
+      .getBoundingClientRect()
     let initialX = Math.floor(Math.random() * parentBounds.width)
     let initialY = Math.floor(Math.random() * parentBounds.height) - blob.height
     blob.style.left = `${initialX}px`

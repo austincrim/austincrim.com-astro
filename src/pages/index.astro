@@ -1,13 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Hero from '../lib/Hero.svelte'
+import Hero from '../lib/Hero.astro'
 import Section from '../lib/Section.svelte'
 import Footer from '../lib/Footer.svelte'
 import PostPreview from '../lib/PostPreview.svelte'
-import { getAllPostProperties } from '../lib/notion'
 import { RightArrow } from '../lib/Icons'
 
-let posts = (await getAllPostProperties()).slice(0, 3)
+let posts = (await Astro.glob('./blog/**.md'))
+	.filter((post) => !post.frontmatter.draft)
+	.sort(
+		(a, b) =>
+			new Date(b.frontmatter.datePublished).valueOf() -
+			new Date(a.frontmatter.datePublished).valueOf()
+	)
 ---
 
 <Layout title="Austin Crim | building for the web">
@@ -25,14 +30,19 @@ let posts = (await getAllPostProperties()).slice(0, 3)
 	/>
 	<meta name="og:url" content="https://austincrim.com" slot="og" />
 	<main>
-		<Hero client:idle />
+		<Hero />
 		<Section title="What I'm Writing">
 			<div class="flex flex-col gap-10 py-8">
 				<ul class="flex flex-col gap-20">
 					{
-						posts.map((post) => (
+						posts.slice(0, 3).map((post) => (
 							<li>
-								<PostPreview post={post} />
+								<PostPreview
+									post={{
+										...post.frontmatter,
+										url: post.url
+									}}
+								/>
 							</li>
 						))
 					}

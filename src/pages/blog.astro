@@ -1,9 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { getAllPostProperties } from '../lib/notion'
 import PostPreview from '../lib/PostPreview.svelte'
 
-let posts = await getAllPostProperties()
+let posts = (await Astro.glob('./blog/**.md'))
+  .filter((post) => !post.frontmatter.draft)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.datePublished).valueOf() -
+      new Date(a.frontmatter.datePublished).valueOf()
+  )
 ---
 
 <!-- <svelte:head>
@@ -27,6 +32,10 @@ let posts = await getAllPostProperties()
     class="flex flex-col max-w-5xl mx-auto my-20 space-y-12 dark:text-gray-50 md:rounded-lg"
   >
     <h3 class="text-4xl text-primary">Posts</h3>
-    {posts.map((post) => <PostPreview post={post} />)}
+    {
+      posts.map((post) => (
+        <PostPreview post={{ ...post.frontmatter, url: post.url }} />
+      ))
+    }
   </div>
 </Layout>

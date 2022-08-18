@@ -18,11 +18,6 @@
     "svelte": "^3.46.4"
   },
   "dependencies": {
-    "@fontsource/merriweather": "^4.5.13",
-    "@notionhq/client": "^2.1.1",
-    "dotenv": "^16.0.1",
-    "highlight.js": "^11.6.0",
-    "marked": "^4.0.18",
-    "notion-to-md": "^2.5.5"
+    "@fontsource/merriweather": "^4.5.13"
   }
 }
