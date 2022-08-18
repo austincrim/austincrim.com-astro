@@ -2,6 +2,7 @@
   "name": "@example/basics",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -17,6 +18,7 @@
     "svelte": "^3.46.4"
   },
   "dependencies": {
+    "@fontsource/merriweather": "^4.5.13",
     "@notionhq/client": "^2.1.1",
     "dotenv": "^16.0.1",
     "highlight.js": "^11.6.0",

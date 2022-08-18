@@ -1,0 +1,44 @@
+---
+import Layout from './Layout.astro'
+import '../styles/post.css'
+
+let { frontmatter } = Astro.props
+---
+
+<Layout title={`Austin Crim | ${frontmatter.title}`}>
+  <meta
+    name="description"
+    content={frontmatter.title + ' | ' + frontmatter.lede}
+    slot="og"
+  />
+  <meta name="og:title" content={frontmatter.title} slot="og" />
+  <meta
+    name="og:image"
+    content={`https://austincrim.com/og/${frontmatter.slug}.png`}
+    slot="og"
+  />
+  <meta
+    name="og:url"
+    content={`https://austincrim.com/${frontmatter.slug}`}
+    slot="og"
+  />
+
+  <article class={`flex flex-col justify-around pb-16 space-y-10 text-base`}>
+    <div class="flex flex-col space-y-4 heading">
+      <h1 class="inline pt-10 text-4xl text-primary">
+        {frontmatter.title}
+      </h1>
+      <span class="text-lg">{frontmatter.lede}</span>
+      <span class="text-muted">
+        {new Date(frontmatter.datePublished).toLocaleDateString('en-US')}
+      </span>
+    </div>
+    <div class="max-w-4xl">
+      <div
+        class="mt-8 leading-loose prose prose-pre:text-gray-800 prose-pre:bg-gray-50 max-w-none article text-lg"
+      >
+        <slot />
+      </div>
+    </div>
+  </article>
+</Layout>

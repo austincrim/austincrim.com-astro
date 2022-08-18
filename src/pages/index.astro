@@ -5,24 +5,25 @@ import Section from '../lib/Section.svelte'
 import Footer from '../lib/Footer.svelte'
 import PostPreview from '../lib/PostPreview.svelte'
 import { getAllPostProperties } from '../lib/notion'
+import { RightArrow } from '../lib/Icons'
 
 let posts = (await getAllPostProperties()).slice(0, 3)
 ---
 
-<Layout title="Welcome to Astro.">
-	<svelte:head>
-		<title>Austin Crim | building for the web</title>
-		<meta
-			name="description"
-			content="The personal website of Austin Crim, a web builder"
-		/>
-		<meta
-			name="og:title"
-			content="The personal website of Austin Crim, a web builder"
-		/>
-		<meta name="og:image" content="https://austincrim.com/og/index.png" />
-		<meta name="og:url" content="https://austincrim.com" />
-	</svelte:head>
+<Layout title="Austin Crim | building for the web">
+	<meta
+		name="description"
+		content="The personal website of Austin Crim, a web builder"
+		slot="og"
+	/>
+	<meta
+		name="og:title"
+		content="The personal website of Austin Crim, a web builder"
+		slot="og"
+	/>
+	<meta name="og:image" content="https://austincrim.com/og/index.png" slot="og"
+	/>
+	<meta name="og:url" content="https://austincrim.com" slot="og" />
 	<main>
 		<Hero client:idle />
 		<Section title="What I'm Writing">
@@ -43,8 +44,8 @@ let posts = (await getAllPostProperties()).slice(0, 3)
 					<span class="mr-1">Read more</span>
 					<span
 						class="inline-block align-middle transition-transform transform group-hover:translate-x-1"
+						set:html={RightArrow()}
 					>
-						<img src="/svg/right-arrow.svg" alt="an arrow pointing right" />
 					</span>
 				</a>
 			</div>

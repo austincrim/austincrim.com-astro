@@ -43,7 +43,7 @@ export async function getAllPostProperties() {
   return parseDatabaseProperties(result)
 }
 
-/** @returns {Promise<{published: boolean, datePublished: string, lede: string, title: string, slug: string, html: string}>} */
+/** @returns {Promise<{published: boolean, datePublished: string, lede: string, title: string, slug: string, html: string, markdown: string}>} */
 export async function getPostProperties(slug) {
   let result = await notion.databases.query({
     database_id: process.env.NOTION_POSTS_DB_ID,
@@ -59,7 +59,7 @@ export async function getPostProperties(slug) {
 
   let html = marked.parse(markdown)
 
-  parsed = { ...parsed, html }
+  parsed = { ...parsed, html, markdown }
   return parsed
 }
 
@@ -67,6 +67,7 @@ export async function getPostMarkdown(pageId) {
   let blocks = await n2m.pageToMarkdown(pageId)
   return n2m.toMarkdownString(blocks)
 }
+
 /** @returns {{published: boolean, datePublished: string, lede: string, title: string, slug: string}[]} */
 function parseDatabaseProperties(database) {
   let postProperties = []
@@ -76,11 +77,11 @@ function parseDatabaseProperties(database) {
       if (k === 'Published') {
         properties.published = v.checkbox
       } else if (k === 'Date Published') {
-        properties.datePublished = v.date.start
+        properties.datePublished = v.date?.start ?? '9999-99-99'
       } else if (k === 'Lede') {
-        properties.lede = v.rich_text[0].plain_text
+        properties.lede = v.rich_text[0]?.plain_text
       } else if (k === 'Title') {
-        properties.title = v.title[0].plain_text
+        properties.title = v.title[0]?.plain_text
       } else if (k === 'Slug') {
         properties.slug = v.formula.string
       }

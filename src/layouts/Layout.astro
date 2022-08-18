@@ -1,12 +1,15 @@
 ---
 import Nav from '../lib/Nav.svelte'
+import '@fontsource/merriweather'
 import '../styles/tailwind.css'
+
 export interface Props {
 	title: string
 }
 
 const { title } = Astro.props as Props
 let route = Astro.url.pathname
+let activeLink = route.includes('/blog') ? 'blog' : 'home'
 ---
 
 <!DOCTYPE html>
@@ -15,17 +18,12 @@ let route = Astro.url.pathname
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap"
-			rel="stylesheet"
-		/>
 		<meta name="generator" content={Astro.generator} />
+		<slot name="og" />
 		<title>{title}</title>
 	</head>
 	<div class="text-base bg-base">
-		<Nav client:load route={route} />
+		<Nav activeLink={activeLink} />
 		<div class="px-10 mx-auto lg:max-w-5xl md:max-w-3xl">
 			<slot />
 		</div>

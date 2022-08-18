@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/svelte': ^1.0.0
   '@astrojs/tailwind': ^1.0.0
+  '@fontsource/merriweather': ^4.5.13
   '@notionhq/client': ^2.1.1
   '@tailwindcss/typography': ^0.5.4
   astro: ^1.0.6
@@ -13,6 +14,7 @@ specifiers:
   svelte: ^3.46.4
 
 dependencies:
+  '@fontsource/merriweather': 4.5.13
   '@notionhq/client': 2.1.1
   dotenv: 16.0.1
   highlight.js: 11.6.0
@@ -420,6 +422,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@fontsource/merriweather/4.5.13:
+    resolution: {integrity: sha512-VYPWyVtPvW8S4gGxWE+PdkVHNr44456Gkm49mD4qXmP8Zs2dPU8YG8an8KBIqHcPI6H74iGyll2+AohmGApkxw==}
+    dev: false
 
   /@jridgewell/gen-mapping/0.1.1:
     resolution: {integrity: sha512-sQXCasFk+U8lWYEe66WxRDOE9PjVz4vSM51fTu3Hw+ClTpUSQb718772vH3pyS5pShp6lvQM7SxgIDXXXmOX7w==}
