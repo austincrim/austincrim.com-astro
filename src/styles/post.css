@@ -8,15 +8,29 @@
 }
 @keyframes slide-in {
   from {
-    transform: translateX(-2rem);
+    transform: translateX(-12px);
   }
   to {
     transform: translateX(0);
   }
 }
+@keyframes zhoop {
+  from {
+    transform: translateY(5px);
+  }
+}
+
+:root {
+  --yummy: linear-gradient(140deg, whitesmoke, theme(colors.blue.200) 20%, whitesmoke 50%, theme(colors.indigo.200), whitesmoke);
+}
 
 .heading {
   animation: fade-in 250ms ease-out 50ms backwards;
+}
+
+.gradient-container {
+  animation: fade-in 400ms ease-out 50ms backwards, zhoop 400ms ease-out 50ms backwards;
+  background: var(--yummy);
 }
 
 .article {

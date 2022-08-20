@@ -4,11 +4,7 @@ import '@fontsource/merriweather/300.css'
 import '@fontsource/merriweather/400.css'
 import '../styles/tailwind.css'
 
-export interface Props {
-	title: string
-}
-
-const { title } = Astro.props as Props
+const { title } = Astro.props
 let route = Astro.url.pathname
 let activeLink = route.includes('/blog') ? 'blog' : 'home'
 ---
@@ -23,10 +19,8 @@ let activeLink = route.includes('/blog') ? 'blog' : 'home'
 		<slot name="og" />
 		<title>{title}</title>
 	</head>
-	<div class="text-base bg-base">
+	<div class="text-base p-10 bg-base mx-auto lg:max-w-5xl md:max-w-3xl">
 		<Nav activeLink={activeLink} />
-		<div class="px-10 mx-auto lg:max-w-5xl md:max-w-3xl">
-			<slot />
-		</div>
+		<slot />
 	</div>
 </html>

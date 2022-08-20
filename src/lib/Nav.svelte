@@ -4,7 +4,7 @@
   export let activeLink
 </script>
 
-<nav class="p-10 text-muted lg:max-w-5xl md:mx-auto md:max-w-3xl relative">
+<nav class="text-muted pb-10 relative">
   <div class="flex items-baseline justify-between">
     <div class="text-xl">
       <a
