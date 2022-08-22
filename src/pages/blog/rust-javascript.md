@@ -1,5 +1,5 @@
 ---
-title: Rust ❤️ JavaScript
+title: 'Rust + JavaScript: a Love Story'
 lede: Learn how to run Rust functions from your JavaScript code using the new hotness, WASM
 datePublished: 2021-12-11
 draft: false
