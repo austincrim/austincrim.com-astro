@@ -2,7 +2,7 @@
 import Layout from './Layout.astro'
 import '../styles/post.css'
 
-let { frontmatter, headings } = Astro.props
+let { frontmatter } = Astro.props
 ---
 
 <Layout title={`Austin Crim | ${frontmatter.title}`}>
@@ -14,7 +14,9 @@ let { frontmatter, headings } = Astro.props
   <meta name="og:title" content={frontmatter.title} slot="og" />
   <meta
     name="og:image"
-    content={`https://austincrim.com/og/${frontmatter.slug}.png`}
+    content={`https://austincrim.com/og/${frontmatter.url
+      .split('/')
+      .at(-1)}.png`}
     slot="og"
   />
   <meta
