@@ -9,7 +9,7 @@
     <div class="text-xl">
       <a
         class:active={activeLink === 'home'}
-        class="inline-block transition-colors hover:text-muted-hover mr-6 md:mr-14"
+        class="inline-block transition-colors hover:text-muted-hover mr-8"
         href="/"
       >
         Home

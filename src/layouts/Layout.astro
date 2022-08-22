@@ -19,7 +19,9 @@ let activeLink = route.includes('/blog') ? 'blog' : 'home'
 		<slot name="og" />
 		<title>{title}</title>
 	</head>
-	<div class="text-base p-10 bg-base mx-auto lg:max-w-5xl md:max-w-3xl">
+	<div
+		class="text-base p-10 bg-base mx-auto lg:max-w-5xl md:max-w-3xl max-w-none"
+	>
 		<Nav activeLink={activeLink} />
 		<slot />
 	</div>

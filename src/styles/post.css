@@ -40,4 +40,5 @@
 
 .astro-code {
   border: 1px solid lightgrey;
+  background-color: theme(colors.slate.50) !important;
 }
