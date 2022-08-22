@@ -20,10 +20,6 @@
   }
 }
 
-:root {
-  --yummy: linear-gradient(140deg, whitesmoke, theme(colors.blue.200) 20%, whitesmoke 50%, theme(colors.indigo.200), whitesmoke);
-}
-
 .heading {
   animation: fade-in 250ms ease-out 50ms backwards;
 }
