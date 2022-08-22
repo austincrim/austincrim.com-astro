@@ -2,8 +2,11 @@
 import Layout from '../layouts/Layout.astro'
 import PostPreview from '../lib/PostPreview.svelte'
 
-let posts = (await Astro.glob('./blog/**.md'))
-  .filter((post) => !post.frontmatter.draft)
+let posts = (await Astro.glob('./blog/**.{md,mdx}'))
+  .filter((post) => {
+    if (process.env.NODE_ENV !== 'production') return true
+    return !post.frontmatter.draft
+  })
   .sort(
     (a, b) =>
       new Date(b.frontmatter.datePublished).valueOf() -

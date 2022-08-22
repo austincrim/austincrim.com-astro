@@ -10,7 +10,7 @@ layout: ../../layouts/PostLayout.astro
 
 Svelte stores are a subscription-based state management solution offered directly by [Svelte](https://svelte.dev). They are similar in spirit to [MobX](https://mobx.js.org/README.html) or [RxJS Observables](https://rxjs.dev/guide/observable). In essence, a store holds a value and notifies any subscribers when the value changes.
 
-At its core, a `writable` Svelte store (`readable` and `derived` are types of stores that differ slightly) is a plain object with three functions: `subscribe`, `update`, and `set`.
+At its core, a `writable` Svelte store (`readable` and `derived` are other types of stores that differ slightly) is a plain object with three functions: `subscribe`, `update`, and `set`.
 
 `subscribe` sets up a callback function that re-runs whenever the value of the store changes (via `update` or `set`).
 
