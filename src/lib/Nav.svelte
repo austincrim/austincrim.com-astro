@@ -5,24 +5,24 @@
 </script>
 
 <nav class="text-muted pb-10 relative">
-  <div class="flex items-baseline justify-between">
+  <div class="flex items-end justify-between">
     <div class="text-xl">
       <a
         class:active={activeLink === 'home'}
-        class="inline-block transition-colors hover:text-muted-hover mr-8"
+        class="inline-block transition-colors hover:text-muted-hover mr-6"
         href="/"
       >
         Home
       </a>
       <a
         class:active={activeLink === 'blog'}
-        class="inline-block transition-colors hover:text-muted-hover"
+        class="inline-block transition-colors hover:text-muted-hover mr-4"
         href="/blog"
       >
         Blog
       </a>
     </div>
-    <div class="flex items-baseline space-x-8">
+    <div class="flex items-baseline space-x-4 sm:space-x-12">
       <a
         aria-label="austin crim's github profile"
         href="https://github.com/austincrim"
