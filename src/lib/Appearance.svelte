@@ -8,12 +8,12 @@ export default function Appearance({
   return (
     <div class="flex flex-col gap-4 appearance md:flex-row md:justify-between md:items-start">
       <a
-        class="text-xl leading-normal transition-colors text-secondary hover:text-primary"
+        class="text-xl leading-normal transition-colors text-blue-400 hover:text-blue-800"
         href={appearance.appearanceUrl}
       >
         {appearance.title}
       </a>
-      <span class="bg-off-base shadow w-[fit-content] px-4 rounded-full whitespace-nowrap">
+      <span class="bg-gray-50 shadow w-[fit-content] px-4 rounded-full whitespace-nowrap">
         {appearance.origin}
       </span>
     </div>

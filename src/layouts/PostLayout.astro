@@ -38,7 +38,7 @@ let { frontmatter } = Astro.props
       ))
     }
   </ul> -->
-  <article class="flex flex-col justify-around my-12 space-y-10 text-base">
+  <article class="flex flex-col justify-around my-12 space-y-10">
     <div
       class="gradient-container sm:rounded-xl sm:p-1 sm:mx-0 py-1 -mx-10 shadow-md"
     >
@@ -49,7 +49,7 @@ let { frontmatter } = Astro.props
           {frontmatter.title}
         </h1>
         <span class="text-lg">{frontmatter.lede}</span>
-        <span class="text-muted">
+        <span class="text-gray-700">
           {new Date(frontmatter.datePublished).toLocaleDateString('en-US')}
         </span>
       </div>

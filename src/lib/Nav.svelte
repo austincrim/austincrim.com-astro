@@ -4,19 +4,19 @@
   export let activeLink
 </script>
 
-<nav class="text-muted pb-10 relative">
+<nav class="pb-10 relative">
   <div class="flex items-end justify-between">
     <div class="text-xl">
       <a
         class:active={activeLink === 'home'}
-        class="inline-block transition-colors hover:text-muted-hover mr-6"
+        class="text-gray-700 inline-block transition-colors hover:text-gray-500 mr-6"
         href="/"
       >
         Home
       </a>
       <a
         class:active={activeLink === 'blog'}
-        class="inline-block transition-colors hover:text-muted-hover mr-4"
+        class="text-gray-700 inline-block transition-colors hover:text-gray-500 mr-4"
         href="/blog"
       >
         Blog
@@ -26,7 +26,7 @@
       <a
         aria-label="austin crim's github profile"
         href="https://github.com/austincrim"
-        class="inline-block w-8 h-8 transition-colors hover:text-muted-hover"
+        class="inline-block w-8 h-8 transition-colors hover:text-gray-500"
       >
         {@html GitHubLogo()}
       </a>

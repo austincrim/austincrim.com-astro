@@ -7,7 +7,7 @@
     class="relative z-10 flex items-center transition-all ease-out mouse:group-hover:-translate-y-1 duration-100 mouse:group-active:translate-y-0 group-focus-visible:-translate-y-1"
   >
     <div
-      class="flex flex-col flex-grow p-8 space-y-1 text-base border border-gray-200 rounded bg-off-base"
+      class="flex flex-col flex-grow p-8 space-y-1 border border-gray-200 rounded bg-gray-50"
     >
       <div
         class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
@@ -16,7 +16,7 @@
           {post.title}
         </h3>
         <div class="flex flex-col md:items-end md:pl-2">
-          <span class="text-muted">
+          <span class="text-gray-700">
             {new Date(post.datePublished).toLocaleDateString()}
           </span>
         </div>

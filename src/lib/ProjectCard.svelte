@@ -5,7 +5,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div class="flex flex-col justify-between py-8 space-y-8 lg:flex-row lg:items-center">
       <div class="flex flex-col">
-        <h3 class="text-xl font-semibold tracking-wider text-secondary">
+        <h3 class="text-xl font-semibold tracking-wider text-blue-400">
           {title}
         </h3>
         <div class="max-w-xl mt-2">{description}</div>
@@ -15,7 +15,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {repoUrl ? (
           <a
             href={repoUrl}
-            class="flex items-center font-medium transition-colors hover:text-muted-hover"
+            class="flex items-center font-medium transition-colors hover:text-gray-700-hover"
           >
             View Source
           </a>
@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         )}
         {appUrl ? (
           <a
-            class="transition-colors text-primary hover:text-secondary"
+            class="transition-colors text-blue-800 hover:text-blue-400"
             href={appUrl}
           >
             Go to App

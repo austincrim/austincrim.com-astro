@@ -2,16 +2,10 @@
   from {
     opacity: 0;
   }
-  to {
-    opacity: 1;
-  }
 }
 @keyframes slide-in {
   from {
-    transform: translateX(-12px);
-  }
-  to {
-    transform: translateX(0);
+    transform: translateX(-8px);
   }
 }
 @keyframes zhoop {
@@ -25,16 +19,17 @@
 }
 
 .gradient-container {
-  animation: fade-in 400ms ease-out 50ms backwards, zhoop 400ms ease-out 50ms backwards;
+  animation: fade-in 250ms ease-out 50ms backwards,
+    zhoop 250ms ease-out 50ms backwards;
   background: var(--yummy);
 }
 
 .article {
   animation: fade-in 250ms ease-out 100ms backwards,
-    slide-in 400ms ease-out 100ms;
+    slide-in 250ms ease-out 100ms;
 }
 
 .astro-code {
   border: 1px solid lightgrey;
-  background-color: theme(colors.slate.50) !important;
+  background-color: theme('colors.slate.50') !important;
 }
