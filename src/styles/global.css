@@ -51,4 +51,18 @@ h6,
 
 .fancy-gradient {
   background: var(--yummy);
+  background-size: 200% 200%;
+}
+
+a:hover .fancy-gradient {
+  animation: shine 7s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes shine {
+  /* 0% {
+    background-position: 50% 50%;
+  } */
+  50% {
+    background-position: 100% 100%;
+  }
 }
