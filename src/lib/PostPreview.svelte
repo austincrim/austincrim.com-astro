@@ -2,7 +2,7 @@
   export let post
 </script>
 
-<a class="group relative text-gray-700" href={`${post.url}`}>
+<a class="group block relative text-gray-700" href={`${post.url}`}>
   <article
     class="relative z-10 flex items-center transition-all ease-out mouse:group-hover:-translate-y-1 duration-100 mouse:group-active:translate-y-0 group-focus-visible:-translate-y-1"
   >
@@ -24,7 +24,5 @@
       <p class="max-w-3xl leading-8">{post.lede}</p>
     </div>
   </article>
-  <div
-    class="w-full h-full translate-y-1 fancy-gradient shadow absolute rounded top-0 left-0"
-  />
+  <div class=" translate-y-1 fancy-gradient shadow absolute rounded inset-0" />
 </a>

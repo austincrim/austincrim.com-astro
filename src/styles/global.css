@@ -54,8 +54,16 @@ h6,
   background-size: 200% 200%;
 }
 
-a:hover .fancy-gradient {
-  animation: shine 7s ease-in-out infinite alternate-reverse;
+@media (pointer: fine) {
+  a:hover .fancy-gradient {
+    animation: shine 6s ease-in-out infinite alternate-reverse;
+  }
+}
+
+@media (pointer: coarse) {
+  .fancy-gradient {
+    animation: shine 6s ease-in-out infinite alternate-reverse;
+  }
 }
 
 @keyframes shine {
