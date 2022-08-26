@@ -2,7 +2,7 @@
   export let post
 </script>
 
-<a class="group relative" href={`${post.url}`}>
+<a class="group relative text-gray-700" href={`${post.url}`}>
   <article
     class="relative z-10 flex items-center transition-all ease-out mouse:group-hover:-translate-y-1 duration-100 mouse:group-active:translate-y-0 group-focus-visible:-translate-y-1"
   >
