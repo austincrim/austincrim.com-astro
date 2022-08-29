@@ -14,7 +14,7 @@ async function main() {
     headless: chrome.headless
   })
 
-  // read slugs
+  // TODO read slugs
   let slugs = []
 
   slugs.forEach(async ({ slug }) => {

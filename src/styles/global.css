@@ -56,13 +56,13 @@ h6,
 
 @media (pointer: fine) {
   a:hover .fancy-gradient {
-    animation: shine 6s ease-in-out infinite alternate-reverse;
+    animation: shine 3s ease-in-out infinite alternate-reverse;
   }
 }
 
 @media (pointer: coarse) {
   .fancy-gradient {
-    animation: shine 6s ease-in-out infinite alternate-reverse;
+    animation: shine 5s ease-in-out infinite alternate-reverse;
   }
 }
 
