@@ -12,6 +12,12 @@
     "type": "content"
   },
   {
+    "title": "Prisma with Austin Crim",
+    "description": "Had a fun chat with Anthony and Chris of FSJam",
+    "projectUrl": "https://fsjam.org/episodes/episode-75-prisma-with-austin-crim",
+    "type": "content"
+  },
+  {
     "title": "Notarize",
     "description": "A full-stack Markdown note taking app. Next.js + react-query + Prisma + TailwindCSS.",
     "sourceUrl": "https://github.com/austincrim/notarize-react",
@@ -19,16 +25,16 @@
     "type": "oss"
   },
   {
-    "title": "Write Your First WASM Module using Rust",
-    "description": "How to use WASM to execute Rust in your JavaScript code",
-    "projectUrl": "https://www.youtube.com/watch?v=nW71Mlbmxt8",
-    "type": "content"
-  },
-  {
     "title": "Noice Memos",
     "description": "A quick voice memo app using Cloudflare and the Web Audio API",
     "sourceUrl": "https://github.com/austincrim/noice-memos",
     "projectUrl": "https://noice-memos.pages.dev",
     "type": "oss"
+  },
+  {
+    "title": "Rust + JavaScript Screencast",
+    "description": "How to use WASM to execute Rust in your JavaScript code",
+    "projectUrl": "https://www.youtube.com/watch?v=nW71Mlbmxt8",
+    "type": "content"
   }
 ]
