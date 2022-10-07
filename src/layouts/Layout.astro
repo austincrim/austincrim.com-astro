@@ -11,16 +11,16 @@ let activeLink = route.includes('/blog') ? 'blog' : 'home'
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<slot name="og" />
-		<title>{title}</title>
-	</head>
-	<div class="p-10 mx-auto lg:max-w-4xl md:max-w-3xl sm:max-w-2xl">
-		<Nav activeLink={activeLink} />
-		<slot />
-	</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <slot name="og" />
+    <title>{title}</title>
+  </head>
+  <div class="p-10 mx-auto lg:max-w-4xl md:max-w-3xl sm:max-w-2xl">
+    <Nav activeLink={activeLink} />
+    <slot />
+  </div>
 </html>

@@ -1,0 +1,12 @@
+---
+let { title } = Astro.props
+---
+
+<div class={`w-full pt-32 leading-loose text-gray-700`}>
+  <div class="max-w-6xl mx-auto">
+    <h2 class="pb-12 text-3xl font-semibold text-left text-blue-800">
+      {title}
+    </h2>
+    <slot />
+  </div>
+</div>

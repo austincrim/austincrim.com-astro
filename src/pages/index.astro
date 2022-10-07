@@ -1,73 +1,89 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Hero from '../lib/Hero.astro'
-import Section from '../lib/Section.svelte'
-import Footer from '../lib/Footer.svelte'
+import Section from '../lib/Section.astro'
+import Footer from '../lib/Footer.astro'
 import PostPreview from '../lib/PostPreview.svelte'
+import ProjectCard from '../lib/ProjectCard.astro'
 import { RightArrow } from '../lib/Icons'
+import fs from 'node:fs/promises'
 
 let posts = (await Astro.glob('./blog/**.md'))
-	.filter((post) => !post.frontmatter.draft)
-	.sort(
-		(a, b) =>
-			new Date(b.frontmatter.datePublished).valueOf() -
-			new Date(a.frontmatter.datePublished).valueOf()
-	)
+  .filter((post) => !post.frontmatter.draft)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.datePublished).valueOf() -
+      new Date(a.frontmatter.datePublished).valueOf()
+  )
+
+let projects = JSON.parse(
+  await fs.readFile('./src/data/projects.json', 'utf-8')
+)
 ---
 
 <Layout title="Austin Crim | building for the web">
-	<meta
-		name="description"
-		content="The personal website of Austin Crim, a web builder"
-		slot="og"
-	/>
-	<meta
-		name="og:title"
-		content="The personal website of Austin Crim, a web builder"
-		slot="og"
-	/>
-	<meta name="og:image" content="https://austincrim.com/og/index.png" slot="og"
-	/>
-	<meta name="og:url" content="https://austincrim.com" slot="og" />
-	<main>
-		<Hero />
-		<Section title="What I'm Writing">
-			<div class="flex flex-col gap-10 py-8">
-				<ul class="flex flex-col gap-20">
-					{
-						posts.slice(0, 3).map((post) => (
-							<li>
-								<PostPreview
-									post={{
-										...post.frontmatter,
-										url: post.url
-									}}
-								/>
-							</li>
-						))
-					}
-				</ul>
-				<a
-					class="self-end text-lg font-semibold transition-colors text-blue-800 hover:text-blue-400 group"
-					href="/blog"
-				>
-					<span class="mr-1">Read more</span>
-					<span
-						class="inline-block align-middle transition-transform transform group-hover:translate-x-1"
-						set:html={RightArrow()}
-					>
-					</span>
-				</a>
-			</div>
-		</Section>
-	</main>
+  <meta
+    name="description"
+    content="The personal website of Austin Crim, a web builder"
+    slot="og"
+  />
+  <meta
+    name="og:title"
+    content="The personal website of Austin Crim, a web builder"
+    slot="og"
+  />
+  <meta
+    name="og:image"
+    content="https://austincrim.com/og/index.png"
+    slot="og"
+  />
+  <meta name="og:url" content="https://austincrim.com" slot="og" />
+  <main>
+    <Hero />
+    <Section title="What I'm Writing">
+      <div class="flex flex-col gap-10">
+        <ul class="flex flex-col gap-20">
+          {
+            posts.slice(0, 3).map((post) => (
+              <li>
+                <PostPreview
+                  post={{
+                    ...post.frontmatter,
+                    url: post.url
+                  }}
+                />
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          class="self-end text-lg font-semibold text-blue-800 transition-colors hover:text-blue-400 group"
+          href="/blog"
+        >
+          <span class="mr-1">Read more</span>
+          <span
+            class="inline-block align-middle transition-transform transform group-hover:translate-x-1"
+            set:html={RightArrow()}
+          >
+          </span>
+        </a>
+      </div>
+    </Section>
+    <Section title="What I'm Working On">
+      <div
+        class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,25ch),1fr))] gap-16"
+      >
+        {projects.map((project) => <ProjectCard {project} />)}
+      </div>
+    </Section>
+  </main>
 
-	<Footer>
-		<div class="flex flex-col items-center gap-4">
-			<a class="font-medium underline" href="mailto:aust.crim@gmail.com">
-				Say Hi
-			</a>
-			<span>Designed and developed by Austin Crim</span>
-		</div>
-	</Footer>
+  <Footer>
+    <div class="flex flex-col items-center gap-4">
+      <a class="font-medium underline" href="mailto:aust.crim@gmail.com">
+        Say Hi
+      </a>
+      <span>Designed and developed by Austin Crim</span>
+    </div>
+  </Footer>
 </Layout>
