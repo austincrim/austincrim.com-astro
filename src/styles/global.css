@@ -4,7 +4,6 @@ h3,
 h4,
 h5,
 h6,
-.prose,
 .about {
   font-family: 'Merriweather', sans-serif;
 }
@@ -54,15 +53,16 @@ h6,
   background-size: 200% 200%;
 }
 
-@media (pointer: fine) {
-  a:hover .fancy-gradient {
-    animation: shine 3s ease-in-out infinite alternate-reverse;
+@media (hover: hover) {
+  a:hover .fancy-gradient,
+  a:focus-visible .fancy-gradient {
+    animation: shine 4s ease-in-out infinite alternate-reverse;
   }
 }
 
-@media (pointer: coarse) {
+@media (pointer: none) {
   .fancy-gradient {
-    animation: shine 5s ease-in-out infinite alternate-reverse;
+    animation: shine 7s ease-in-out infinite alternate-reverse;
   }
 }
 
