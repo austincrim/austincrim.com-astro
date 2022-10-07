@@ -27,8 +27,8 @@
   {
     "title": "Noice Memos",
     "description": "A quick voice memo app using Cloudflare and the Web Audio API",
-    "projectUrl": "https://github.com/austincrim/noice-memos",
-    "sourceUrl": "https://noice-memos.pages.dev",
+    "sourceUrl": "https://github.com/austincrim/noice-memos",
+    "projectUrl": "https://noice-memos.pages.dev",
     "type": "oss"
   }
 ]
