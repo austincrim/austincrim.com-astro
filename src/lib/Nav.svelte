@@ -1,5 +1,5 @@
 <script>
-  import { GitHubLogo, TwitterLogo, YoutubeLogo } from './Icons'
+  import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from './Icons'
 
   export let activeLink
 </script>
@@ -22,11 +22,18 @@
         Blog
       </a>
     </div>
-    <div class="flex items-baseline space-x-4 sm:space-x-12">
+    <div class="flex items-baseline space-x-6 sm:space-x-10">
+      <a
+        aria-label="austin crim's rss feed"
+        href="/rss.xml"
+        class="inline-block w-8 h-8 transition-colors hover:text-gray-600"
+      >
+        {@html Rss()}
+      </a>
       <a
         aria-label="austin crim's github profile"
         href="https://github.com/austincrim"
-        class="inline-block w-8 h-8 transition-colors hover:text-gray-500"
+        class="inline-block w-8 h-8 transition-colors hover:text-gray-600"
       >
         {@html GitHubLogo()}
       </a>
