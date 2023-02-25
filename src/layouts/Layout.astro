@@ -18,6 +18,8 @@ let activeLink = route.includes('/blog') ? 'blog' : 'home'
     <meta name="generator" content={Astro.generator} />
     <slot name="og" />
     <title>{title}</title>
+
+    <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <div class="p-10 mx-auto lg:max-w-4xl md:max-w-3xl sm:max-w-2xl">
     <Nav activeLink={activeLink} />
