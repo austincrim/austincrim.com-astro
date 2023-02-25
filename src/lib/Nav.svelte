@@ -22,7 +22,7 @@
         Blog
       </a>
     </div>
-    <div class="flex items-baseline space-x-6 sm:space-x-10">
+    <div class="flex items-baseline space-x-6 sm:space-x-8">
       <a
         aria-label="austin crim's rss feed"
         href="/rss.xml"

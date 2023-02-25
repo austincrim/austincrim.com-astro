@@ -25,14 +25,6 @@ h6,
 }
 
 :root {
-  --color-base: 255 255 255; /* white */
-  --color-text-base: 0 0 0; /* black */
-  --color-off-base: 249 250 251; /* gray-50 */
-  --color-text-muted: 55 65 81; /* gray-700 */
-  --color-text-muted-hover: 107 114 128; /* gray-500 */
-  --color-primary: 30 64 175; /* blue-800 */
-  --color-secondary: 96 165 250; /* blue-400 */
-
   --yummy: linear-gradient(
     140deg,
     whitesmoke,
@@ -67,9 +59,6 @@ h6,
 }
 
 @keyframes shine {
-  /* 0% {
-    background-position: 50% 50%;
-  } */
   50% {
     background-position: 100% 100%;
   }
