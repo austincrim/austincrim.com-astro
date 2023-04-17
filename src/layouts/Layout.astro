@@ -22,7 +22,8 @@ let activeLink = route.includes('/blog') ? 'blog' : 'home'
     <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <div class="p-10 mx-auto lg:max-w-4xl md:max-w-3xl sm:max-w-2xl">
-    <Nav activeLink={activeLink} />
+    <Nav client:load activeLink={activeLink} />
     <slot />
   </div>
+
 </html>
