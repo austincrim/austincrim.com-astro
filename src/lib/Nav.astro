@@ -1,0 +1,62 @@
+---
+import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from './Icons'
+
+let { activeLink } = Astro.props
+---
+
+<nav class="text-muted lg:max-w-5xl mx-auto sm:max-w-3xl relative">
+  <div
+    class="flex flex-col sm:flex-row items-center sm:items-baseline justify-between space-y-8"
+  >
+    <div class="text-xl flex justify-center sm:inline">
+      <a
+        class="inline-block transition-colors hover:text-muted-hover mr-6 sm:mr-14"
+        class:list={{ active: activeLink === 'home' }}
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        class="inline-block transition-colors hover:text-muted-hover"
+        href="/blog"
+        class:list={{ active: activeLink === 'blog' }}
+      >
+        Blog
+      </a>
+    </div>
+    <div class="flex justify-center items-baseline space-x-8">
+      <a
+        aria-label="austin crim's rss feed"
+        href="/rss.xml"
+        class="inline-block w-8 h-8 transition-colors hover:text-gray-600"
+        set:html={Rss()}
+      />
+      <a
+        aria-label="austin crim's github profile"
+        href="https://github.com/austincrim"
+        class="inline-block w-8 h-8 transition-colors hover:text-gray-600"
+        set:html={GitHubLogo()}
+      />
+      <a
+        aria-label="austin crim's twitter profile"
+        href="https://twitter.com/crim_codes"
+        class="inline-block w-8 h-8 transition-colors text-[#1D9BF0] hover:text-[#2EACF1]"
+        set:html={TwitterLogo()}
+      />
+      <a
+        aria-label="austin crim's youtube channel"
+        href="https://youtube.com/austincrim"
+        class="inline-block w-8 h-8 transition-colors text-[#dd0000] hover:text-[#ee0000]"
+        set:html={YoutubeLogo()}
+      />
+    </div>
+  </div>
+</nav>
+
+<style>
+  .active {
+    border-bottom-width: theme('borderWidth.2');
+    border-bottom-color: theme('borderColor.blue.500');
+    padding-bottom: theme('padding.1');
+  }
+</style>

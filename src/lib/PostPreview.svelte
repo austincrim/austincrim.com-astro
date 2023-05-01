@@ -7,7 +7,7 @@
     class="relative z-10 flex items-center transition-all ease-out mouse:group-hover:-translate-y-1 duration-100 mouse:group-active:translate-y-0 group-focus-visible:-translate-y-1"
   >
     <div
-      class="flex flex-col flex-grow p-8 space-y-1 border border-gray-200 rounded-t bg-gray-50"
+      class="flex flex-col flex-grow p-8 space-y-1 border border-gray-300 rounded group-hover:rounded-b-none bg-gray-50/80"
     >
       <div
         class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
@@ -21,8 +21,10 @@
           </span>
         </div>
       </div>
-      <p class="max-w-3xl leading-8">{post.lede}</p>
+      <p class="max-w-3xl text-gray-700 leading-8">{post.lede}</p>
     </div>
   </article>
-  <div class=" translate-y-1 fancy-gradient shadow absolute rounded inset-0" />
+  <div
+    class="fancy-gradient shadow absolute rounded inset-0 mouse:group-hover:-top-1 group-focus-visible:-top-1 group-active:translate-y-1 transition-[top] duration-100"
+  />
 </a>

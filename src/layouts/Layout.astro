@@ -1,5 +1,5 @@
 ---
-import Nav from '../lib/Nav.svelte'
+import Nav from '../lib/Nav.astro'
 import '@fontsource/merriweather/300.css'
 import '@fontsource/merriweather/400.css'
 import '../styles/global.css'
@@ -19,10 +19,14 @@ let activeLink = route.includes('/blog') ? 'blog' : 'home'
     <slot name="og" />
     <title>{title}</title>
 
-    <script defer src="/_vercel/insights/script.js"></script>
+    {
+      import.meta.env.PROD ? (
+        <script defer src="/_vercel/insights/script.js" />
+      ) : null
+    }
   </head>
-  <div class="p-10 mx-auto lg:max-w-4xl md:max-w-3xl sm:max-w-2xl">
-    <Nav client:load activeLink={activeLink} />
+  <div class="px-10 py-4 mx-auto lg:max-w-4xl md:max-w-3xl sm:max-w-2xl">
+    <Nav activeLink={activeLink} />
     <slot />
   </div>
 
