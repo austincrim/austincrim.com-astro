@@ -36,7 +36,8 @@ h6,
 }
 
 .hero-gradient {
-  --tw-gradient-stops: theme('colors.blue.400'), theme('colors.blue.800');
+  --tw-gradient-stops: theme('colors.blue.700'), theme('colors.indigo.300'),
+    theme('colors.blue.400');
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
 

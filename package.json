@@ -11,7 +11,6 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^0.17.2",
     "@astrojs/svelte": "^2.1.0",
     "@astrojs/tailwind": "^3.1.1",
     "@tailwindcss/typography": "^0.5.9",
@@ -21,8 +20,6 @@
   },
   "dependencies": {
     "@astrojs/rss": "^2.3.2",
-    "@fontsource/merriweather": "^4.5.14",
-    "@vercel/og": "^0.5.4",
-    "satori-html": "^0.3.2"
+    "@fontsource/merriweather": "^4.5.14"
   }
 }
