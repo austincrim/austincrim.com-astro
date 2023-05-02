@@ -14,5 +14,6 @@
     // Enable strict type checking.
     "strict": true,
     "noImplicitAny": false,
+    "skipLibCheck": true
   }
 }
