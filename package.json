@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@astrojs/rss": "^2.3.2",
-    "@fontsource/merriweather": "^4.5.14"
+    "@fontsource/merriweather": "^4.5.14",
+    "@vercel/og": "^0.5.4",
+    "satori-html": "^0.3.2"
   }
 }
