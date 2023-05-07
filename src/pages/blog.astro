@@ -31,14 +31,14 @@ let posts = (await Astro.glob('./blog/**.{md,mdx}'))
     slot="og"
   />
   <meta name="og:url" content="https://austincrim.com" slot="og" />
-  <div
-    class="flex flex-col max-w-5xl mx-auto my-20 space-y-12 dark:text-gray-50 md:rounded-lg"
-  >
+  <div class="flex flex-col max-w-5xl mx-auto my-20 md:rounded-lg">
     <h3 class="text-4xl text-blue-800">Posts</h3>
-    {
-      posts.map((post) => (
-        <PostPreview post={{ ...post.frontmatter, url: post.url }} />
-      ))
-    }
+    <div class="flex flex-col gap-20 mt-10">
+      {
+        posts.map((post) => (
+          <PostPreview post={{ ...post.frontmatter, url: post.url }} />
+        ))
+      }
+    </div>
   </div>
 </Layout>
