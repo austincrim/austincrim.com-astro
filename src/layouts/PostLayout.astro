@@ -3,6 +3,7 @@ import Layout from './Layout.astro'
 import '../styles/post.css'
 
 let { frontmatter } = Astro.props
+let slug = frontmatter.url.split('/').at(-1)
 ---
 
 <Layout title={`Austin Crim | ${frontmatter.title}`}>
@@ -40,15 +41,21 @@ let { frontmatter } = Astro.props
   </ul> -->
   <article class="flex flex-col justify-around my-16 gap-16">
     <div
+      style={`view-transition-name: ${slug}`}
       class="gradient-container sm:rounded-xl sm:p-1 sm:mx-0 py-1 -mx-10 shadow-md"
     >
       <div
         class="flex flex-col space-y-4 heading p-10 bg-white bg-opacity-60 sm:rounded-lg text-slate-600"
       >
-        <h1 class="inline text-3xl text-gray-800">
+        <h1
+          style={`view-transition-name: ${slug}-title`}
+          class="inline text-3xl text-gray-800"
+        >
           {frontmatter.title}
         </h1>
-        <span class="text-lg">{frontmatter.lede}</span>
+        <span style={`view-transition-name: ${slug}-lede`} class="text-lg"
+          >{frontmatter.lede}</span
+        >
         <span class="text-gray-700">
           {new Date(frontmatter.datePublished).toLocaleDateString('en-US')}
         </span>
@@ -88,9 +95,3 @@ let { frontmatter } = Astro.props
   )
   headingEls.forEach((el) => observer.observe(el))
 </script> -->
-
-<style define:vars={{ slug: frontmatter.url.replaceAll('/', '-') }}>
-  .gradient-container {
-    view-transition-name: var(--slug);
-  }
-</style>

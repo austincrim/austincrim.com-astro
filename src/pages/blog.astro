@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import PostPreview from '../lib/PostPreview.svelte'
+import PostPreview from '../lib/PostPreview.astro'
 
 let posts = (await Astro.glob('./blog/**.{md,mdx}'))
   .filter((post) => {

@@ -1,6 +1,6 @@
-<script>
-  export let post
-</script>
+---
+let { post } = Astro.props
+---
 
 <a class="group block relative text-gray-900" href={`${post.url}`}>
   <article
@@ -12,7 +12,10 @@
       <div
         class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
       >
-        <h3 class="text-xl font-bold tracking-wider underline sm:no-underline">
+        <h3
+          style={`view-transition-name: ${post.slug}-title`}
+          class="text-xl font-bold tracking-wider underline sm:no-underline"
+        >
           {post.title}
         </h3>
         <div class="flex flex-col md:items-end md:pl-2">
@@ -21,10 +24,16 @@
           </span>
         </div>
       </div>
-      <p class="max-w-3xl text-gray-700 leading-8">{post.lede}</p>
+      <p
+        style={`view-transition-name: ${post.slug}-lede`}
+        class="max-w-3xl text-gray-700 leading-8"
+      >
+        {post.lede}
+      </p>
     </div>
   </article>
   <div
     class="fancy-gradient shadow absolute rounded inset-0 mouse:group-hover:-top-1 group-focus-visible:-top-1 group-active:translate-y-1 transition-[top] duration-100"
-  />
+  >
+  </div>
 </a>

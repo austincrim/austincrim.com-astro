@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Hero from '../lib/Hero.astro'
 import Section from '../lib/Section.astro'
 import Footer from '../lib/Footer.astro'
-import PostPreview from '../lib/PostPreview.svelte'
+import PostPreview from '../lib/PostPreview.astro'
 import ProjectCard from '../lib/ProjectCard.astro'
 import { RightArrow } from '../lib/Icons'
 import fs from 'node:fs/promises'
@@ -15,7 +15,10 @@ let posts = (await Astro.glob('./blog/**.md'))
       new Date(b.frontmatter.datePublished).valueOf() -
       new Date(a.frontmatter.datePublished).valueOf()
   )
-
+  .map((p) => ({
+    ...p,
+    frontmatter: { ...p.frontmatter, slug: p.url.split('/').at(-1) }
+  }))
 let projects = JSON.parse(
   await fs.readFile('./src/data/projects.json', 'utf-8')
 )
@@ -45,9 +48,7 @@ let projects = JSON.parse(
         <ul class="flex flex-col gap-20">
           {
             posts.slice(0, 3).map((post) => (
-              <li
-                style={`view-transition-name: ${post.url.replaceAll('/', '-')}`}
-              >
+              <li style={`view-transition-name: ${post.frontmatter.slug}`}>
                 <PostPreview
                   post={{
                     ...post.frontmatter,
