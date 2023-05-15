@@ -36,7 +36,11 @@ let posts = (await Astro.glob('./blog/**.{md,mdx}'))
     <div class="flex flex-col gap-20 mt-10">
       {
         posts.map((post) => (
-          <PostPreview post={{ ...post.frontmatter, url: post.url }} />
+          <div
+            style={`view-transition-name: ${post.url.replaceAll('/', '-')};`}
+          >
+            <PostPreview post={{ ...post.frontmatter, url: post.url }} />
+          </div>
         ))
       }
     </div>

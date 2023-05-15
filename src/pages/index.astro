@@ -45,7 +45,9 @@ let projects = JSON.parse(
         <ul class="flex flex-col gap-20">
           {
             posts.slice(0, 3).map((post) => (
-              <li>
+              <li
+                style={`view-transition-name: ${post.url.replaceAll('/', '-')}`}
+              >
                 <PostPreview
                   post={{
                     ...post.frontmatter,
@@ -64,8 +66,7 @@ let projects = JSON.parse(
           <span
             class="inline-block align-middle transition-transform transform group-hover:translate-x-1"
             set:html={RightArrow()}
-          >
-          </span>
+          />
         </a>
       </div>
     </Section>

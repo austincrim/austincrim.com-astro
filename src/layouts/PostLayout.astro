@@ -88,3 +88,9 @@ let { frontmatter } = Astro.props
   )
   headingEls.forEach((el) => observer.observe(el))
 </script> -->
+
+<style define:vars={{ slug: frontmatter.url.replaceAll('/', '-') }}>
+  .gradient-container {
+    view-transition-name: var(--slug);
+  }
+</style>
