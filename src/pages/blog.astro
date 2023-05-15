@@ -12,6 +12,10 @@ let posts = (await Astro.glob('./blog/**.{md,mdx}'))
       new Date(b.frontmatter.datePublished).valueOf() -
       new Date(a.frontmatter.datePublished).valueOf()
   )
+  .map((p) => ({
+    ...p,
+    frontmatter: { ...p.frontmatter, slug: p.url.split('/').at(-1) }
+  }))
 ---
 
 <Layout title="Austin Crim | blogging for the web">
@@ -33,16 +37,19 @@ let posts = (await Astro.glob('./blog/**.{md,mdx}'))
   <meta name="og:url" content="https://austincrim.com" slot="og" />
   <div class="flex flex-col max-w-5xl mx-auto my-20 md:rounded-lg">
     <h3 class="text-4xl text-blue-800">Posts</h3>
-    <div class="flex flex-col gap-20 mt-10">
+    <ul class="flex flex-col gap-20 mt-12">
       {
         posts.map((post) => (
-          <div
-            style={`view-transition-name: ${post.url.replaceAll('/', '-')};`}
-          >
-            <PostPreview post={{ ...post.frontmatter, url: post.url }} />
-          </div>
+          <li style={`view-transition-name: ${post.frontmatter.slug}`}>
+            <PostPreview
+              post={{
+                ...post.frontmatter,
+                url: post.url
+              }}
+            />
+          </li>
         ))
       }
-    </div>
+    </ul>
   </div>
 </Layout>

@@ -47,15 +47,10 @@ let slug = frontmatter.url.split('/').at(-1)
       <div
         class="flex flex-col space-y-4 heading p-10 bg-white bg-opacity-60 sm:rounded-lg text-slate-600"
       >
-        <h1
-          style={`view-transition-name: ${slug}-title`}
-          class="inline text-3xl text-gray-800"
-        >
+        <h1 class="inline text-3xl text-gray-800">
           {frontmatter.title}
         </h1>
-        <span style={`view-transition-name: ${slug}-lede`} class="text-lg"
-          >{frontmatter.lede}</span
-        >
+        <span class="text-lg">{frontmatter.lede}</span>
         <span class="text-gray-700">
           {new Date(frontmatter.datePublished).toLocaleDateString('en-US')}
         </span>
@@ -68,6 +63,7 @@ let slug = frontmatter.url.split('/').at(-1)
     </div>
   </article>
 </Layout>
+
 <!-- <script>
   let headingEls = document.querySelectorAll('h2[id]')
   let tocEls = Array.from(document.querySelectorAll('.heading-toc'))

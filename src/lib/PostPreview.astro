@@ -12,10 +12,7 @@ let { post } = Astro.props
       <div
         class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
       >
-        <h3
-          style={`view-transition-name: ${post.slug}-title`}
-          class="text-xl font-bold tracking-wider underline sm:no-underline"
-        >
+        <h3 class="text-xl font-bold tracking-wider underline sm:no-underline">
           {post.title}
         </h3>
         <div class="flex flex-col md:items-end md:pl-2">
@@ -24,10 +21,7 @@ let { post } = Astro.props
           </span>
         </div>
       </div>
-      <p
-        style={`view-transition-name: ${post.slug}-lede`}
-        class="max-w-3xl text-gray-700 leading-8"
-      >
+      <p class="max-w-3xl text-gray-700 leading-8">
         {post.lede}
       </p>
     </div>
