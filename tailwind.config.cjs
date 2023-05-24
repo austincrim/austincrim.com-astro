@@ -9,6 +9,9 @@ module.exports = {
       screens: {
         touch: { raw: '(pointer: coarse)' },
         mouse: { raw: '(pointer: fine)' }
+      },
+      fontFamily: {
+        merriweather: 'Merriweather'
       }
     }
   },

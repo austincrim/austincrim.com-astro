@@ -1,5 +1,14 @@
 declare module 'astro:content' {
 	interface Render {
+		'.mdoc': Promise<{
+			Content(props: Record<string, any>): import('astro').MarkdownInstance<{}>['Content'];
+			headings: import('astro').MarkdownHeading[];
+		}>;
+	}
+}
+
+declare module 'astro:content' {
+	interface Render {
 		'.md': Promise<{
 			Content: import('astro').MarkdownInstance<{}>['Content'];
 			headings: import('astro').MarkdownHeading[];
@@ -301,9 +310,9 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
-"series-on-learning-traditional-web-dev-as-a-recent-entrant-spas-ssr-etc-.md": {
-	id: "series-on-learning-traditional-web-dev-as-a-recent-entrant-spas-ssr-etc-.md";
-  slug: "series-on-learning-traditional-web-dev-as-a-recent-entrant-spas-ssr-etc-";
+"series-on-learning-traditional-web-dev-as-a-recent-entrant-spas-ssr-etc.md": {
+	id: "series-on-learning-traditional-web-dev-as-a-recent-entrant-spas-ssr-etc.md";
+  slug: "series-on-learning-traditional-web-dev-as-a-recent-entrant-spas-ssr-etc";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

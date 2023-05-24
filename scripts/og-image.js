@@ -1,48 +1,51 @@
-// TODO rewrite for Astro
-const puppeteer = require('puppeteer-core')
-const chrome = require('chrome-aws-lambda')
-const fsSync = require('fs')
-const fs = require('fs/promises')
-const path = require('path')
+// @ts-check
 
-let browser
+import puppeteer from 'puppeteer-core'
+import chrome from 'chrome-aws-lambda'
+import fsSync from 'fs'
+import fs from 'fs/promises'
+import path from 'path'
+
 async function main() {
-  browser = await puppeteer.launch({
+  const browser = await puppeteer.launch({
     args: chrome.args,
     executablePath:
       '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    headless: chrome.headless
+    headless: 'new'
   })
 
-  // TODO read slugs
-  let slugs = []
+  let dirs = await fs.readdir('src/content/posts')
+  await Promise.all(
+    dirs.map(async (slug) => {
+      let url = slug.replace('.md', '')
+      let page = await browser.newPage()
+      await page.setViewport({ width: 1200, height: 627 })
+      await page.goto(`http://localhost:3000/og/${url}`, {
+        waitUntil: 'networkidle0'
+      })
+      let buffer = await page.screenshot({
+        type: 'png',
+        clip: { x: 0, y: 0, width: 1200, height: 630 }
+      })
 
-  slugs.forEach(async ({ slug }) => {
-    let page = await browser.newPage()
-    await page.setViewport({ width: 1200, height: 627 })
-    console.log('navigating...')
-    await page.goto(`http://localhost:3000/og/${slug}`, {
-      waitUntil: 'domcontentloaded'
-    })
-    let buffer = await page.screenshot({
-      type: 'png',
-      clip: { x: 0, y: 0, width: 1200, height: 630 }
-    })
+      let imagePath = path.join('public', 'og', `${slug}.png`)
 
-    let imagePath = path.join(__dirname, 'static', 'og', `${slug}.png`)
-
-    if (fsSync.existsSync(imagePath)) {
-      console.log(`skipped!`)
-    } else {
-      if (buffer) {
-        await fs.writeFile(imagePath, buffer)
-        console.log(`wrote ${imagePath}`)
+      if (fsSync.existsSync(imagePath)) {
+        console.log(`skipped!`)
+      } else {
+        if (buffer) {
+          await fs.writeFile(imagePath, buffer)
+          console.log(`wrote ${imagePath}`)
+        }
       }
-    }
-    await page.close()
-  })
+      await page.close()
+    })
+  )
 }
 
-main().then(() => {
-  console.log('done')
-})
+main()
+  .then(() => {
+    console.log('done')
+    process.exit(0)
+  })
+  .catch((e) => console.error(e))
