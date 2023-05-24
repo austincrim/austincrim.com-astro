@@ -3,7 +3,6 @@ title: 'COBOL’in 🏀: What a 60 year old language taught me about JavaScript'
 lede: How my experience as a mainframe developer shapes my JavaScript code
 datePublished: 2021-06-01
 draft: false
-layout: ../../layouts/PostLayout.astro
 ---
 
 Hey, I'm Austin, and I started my career a few years ago as a 20-year-old COBOL developer.

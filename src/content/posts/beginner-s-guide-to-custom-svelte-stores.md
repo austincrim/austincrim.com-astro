@@ -3,7 +3,6 @@ title: Beginner’s guide to custom Svelte stores
 lede: undefined
 datePublished: 9999-99-99
 draft: true
-layout: ../../layouts/PostLayout.astro
 ---
 
 ## What are Svelte stores?

@@ -3,7 +3,6 @@ title: How I Added Themes to My Website Using Tailwind
 lede: A brief look at my theming workflow
 datePublished: 2021-04-07
 draft: false
-layout: ../../layouts/PostLayout.astro
 ---
 
 ## Background

@@ -3,7 +3,6 @@ title: I love everything about Web Components, except writing them
 lede: undefined
 datePublished: 9999-99-99
 draft: true
-layout: ../../layouts/PostLayout.astro
 ---
 
 - output of WC is desirable

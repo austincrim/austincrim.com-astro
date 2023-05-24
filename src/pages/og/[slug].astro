@@ -1,11 +1,11 @@
 ---
-import type { GetStaticPaths } from 'astro'
+import { getCollection } from 'astro:content'
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  let posts = await Astro.glob('../blog/**.md')
-  return posts.map((post) => ({
-    params: { slug: post.url?.split('/').at(-1) },
-    props: { title: post.frontmatter.title }
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('posts')
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
   }))
 }
 

@@ -3,7 +3,6 @@ title: Building a GraphQL Server on Deno Deploy
 lede: Combining two hot technologies to create a hypestack application
 datePublished: 2021-10-05
 draft: false
-layout: ../../layouts/PostLayout.astro
 ---
 
 **Prerequisites**

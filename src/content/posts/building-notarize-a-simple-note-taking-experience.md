@@ -3,7 +3,6 @@ title: 'Building Notarize 📓: a simple note-taking experience'
 lede: The process of building a note-taking app and my first experience with implementing authentication
 datePublished: 2021-01-31
 draft: false
-layout: ../../layouts/PostLayout.astro
 ---
 
 ### What I Built

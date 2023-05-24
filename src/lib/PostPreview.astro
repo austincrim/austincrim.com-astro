@@ -1,8 +1,13 @@
 ---
+import { CollectionEntry } from 'astro:content'
+
+type Props = {
+  post: CollectionEntry<'posts'>
+}
 let { post } = Astro.props
 ---
 
-<a class="group block relative text-gray-900" href={`${post.url}`}>
+<a class="group block relative text-gray-900" href={`/blog/${post.slug}`}>
   <article
     class="relative z-10 flex items-center transition-all ease-out mouse:group-hover:-translate-y-1 duration-100 mouse:group-active:translate-y-0 group-focus-visible:-translate-y-1"
   >
@@ -13,16 +18,16 @@ let { post } = Astro.props
         class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
       >
         <h3 class="text-xl font-bold tracking-wider underline sm:no-underline">
-          {post.title}
+          {post.data.title}
         </h3>
         <div class="flex flex-col md:items-end md:pl-2">
           <span class="text-gray-700">
-            {new Date(post.datePublished).toLocaleDateString()}
+            {post.data.datePublished.toLocaleDateString()}
           </span>
         </div>
       </div>
       <p class="max-w-3xl text-gray-700 leading-8">
-        {post.lede}
+        {post.data.lede}
       </p>
     </div>
   </article>

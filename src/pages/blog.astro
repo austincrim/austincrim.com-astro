@@ -1,21 +1,15 @@
 ---
+import { getCollection } from 'astro:content'
 import Layout from '../layouts/Layout.astro'
 import PostPreview from '../lib/PostPreview.astro'
 
-let posts = (await Astro.glob('./blog/**.{md,mdx}'))
-  .filter((post) => {
-    if (import.meta.env.DEV) return true
-    return !post.frontmatter.draft
-  })
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.datePublished).valueOf() -
-      new Date(a.frontmatter.datePublished).valueOf()
-  )
-  .map((p) => ({
-    ...p,
-    frontmatter: { ...p.frontmatter, slug: p.url.split('/').at(-1) }
-  }))
+const posts = await getCollection(
+  'posts',
+  (e) => import.meta.env.DEV || !e.data.draft
+)
+posts.sort(
+  (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf()
+)
 ---
 
 <Layout title="Austin Crim | blogging for the web">
@@ -40,13 +34,8 @@ let posts = (await Astro.glob('./blog/**.{md,mdx}'))
     <ul class="flex flex-col gap-20 mt-12">
       {
         posts.map((post) => (
-          <li style={`view-transition-name: ${post.frontmatter.slug}`}>
-            <PostPreview
-              post={{
-                ...post.frontmatter,
-                url: post.url
-              }}
-            />
+          <li style={`view-transition-name: ${post.slug}`}>
+            <PostPreview {post} />
           </li>
         ))
       }

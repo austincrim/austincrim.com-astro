@@ -3,7 +3,6 @@ title: It Might Be Time to Stop Checking Your Site's Bundle Size
 lede: Taking a look at when performance might not matter
 datePublished: 2021-08-13
 draft: false
-layout: ../../layouts/PostLayout.astro
 ---
 
 Now that you are here ready to berate me for the irresponsible advice in my title, first, my site does not have comments, so joke's on you, and second, I think you will find the thrust of the article less inflammatory than my clickbait-adjacent title might have led you to believe.

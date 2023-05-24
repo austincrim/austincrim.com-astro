@@ -3,7 +3,6 @@ import Layout from './Layout.astro'
 import '../styles/post.css'
 
 let { frontmatter } = Astro.props
-let slug = frontmatter.url.split('/').at(-1)
 ---
 
 <Layout title={`Austin Crim | ${frontmatter.title}`}>
@@ -15,9 +14,7 @@ let slug = frontmatter.url.split('/').at(-1)
   <meta name="og:title" content={frontmatter.title} slot="og" />
   <meta
     name="og:image"
-    content={`https://austincrim.com/og/${frontmatter.url
-      .split('/')
-      .at(-1)}.png`}
+    content={`https://austincrim.com/og/${frontmatter.slug}.png`}
     slot="og"
   />
   <meta
@@ -41,7 +38,7 @@ let slug = frontmatter.url.split('/').at(-1)
   </ul> -->
   <article class="flex flex-col justify-around my-16 gap-16">
     <div
-      style={`view-transition-name: ${slug}`}
+      style={`view-transition-name: ${frontmatter.slug}`}
       class="gradient-container sm:rounded-xl sm:p-1 sm:mx-0 py-1 -mx-10 shadow-md"
     >
       <div
@@ -52,7 +49,7 @@ let slug = frontmatter.url.split('/').at(-1)
         </h1>
         <span class="text-lg">{frontmatter.lede}</span>
         <span class="text-gray-700">
-          {new Date(frontmatter.datePublished).toLocaleDateString('en-US')}
+          {frontmatter.datePublished.toLocaleDateString('en-US')}
         </span>
       </div>
     </div>

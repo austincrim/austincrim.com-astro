@@ -3,7 +3,6 @@ title: Quick CSS Transition Explainer
 lede: Everything you need to get up and running with simple CSS transition, explained through an embedded CodePen
 datePublished: 2020-06-29
 draft: false
-layout: ../../layouts/PostLayout.astro
 ---
 
 CSS transitions are easy to use and add that final touch of polish to a UI. I love transitions and they make a site look more professional when used correctly. They were a little confusing at first for me, so I decided to whip up a quick CodePen showing how transitions are written.

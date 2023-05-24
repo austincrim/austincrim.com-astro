@@ -6,22 +6,18 @@ import Footer from '../lib/Footer.astro'
 import PostPreview from '../lib/PostPreview.astro'
 import ProjectCard from '../lib/ProjectCard.astro'
 import { RightArrow } from '../lib/Icons'
-import fs from 'node:fs/promises'
+import { getCollection } from 'astro:content'
 
-let posts = (await Astro.glob('./blog/**.md'))
-  .filter((post) => !post.frontmatter.draft)
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.datePublished).valueOf() -
-      new Date(a.frontmatter.datePublished).valueOf()
-  )
-  .map((p) => ({
-    ...p,
-    frontmatter: { ...p.frontmatter, slug: p.url.split('/').at(-1) }
-  }))
-let projects = JSON.parse(
-  await fs.readFile('./src/data/projects.json', 'utf-8')
+let posts = (
+  await getCollection('posts', (e) => {
+    return !e.data.draft
+  })
 )
+  .sort(
+    (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf()
+  )
+  .slice(0, 3)
+let projects = await getCollection('projects')
 ---
 
 <Layout title="Austin Crim | building for the web">
@@ -48,13 +44,8 @@ let projects = JSON.parse(
         <ul class="flex flex-col gap-20">
           {
             posts.slice(0, 3).map((post) => (
-              <li style={`view-transition-name: ${post.frontmatter.slug}`}>
-                <PostPreview
-                  post={{
-                    ...post.frontmatter,
-                    url: post.url
-                  }}
-                />
+              <li style={`view-transition-name: ${post.slug}`}>
+                <PostPreview {post} />
               </li>
             ))
           }

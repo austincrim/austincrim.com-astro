@@ -3,7 +3,6 @@ title: Yet Another Portfolio Redesign
 lede: Web developers love to change their website, right? Describing my motivation and goals behind the latest iteration of
 datePublished: 2021-03-04
 draft: false
-layout: ../../layouts/PostLayout.astro
 ---
 
 Just give me the links!
