@@ -28,7 +28,7 @@ async function main() {
         clip: { x: 0, y: 0, width: 1200, height: 630 }
       })
 
-      let imagePath = path.join('public', 'og', `${slug}.png`)
+      let imagePath = path.join('public', 'og', `${url}.png`)
 
       if (fsSync.existsSync(imagePath)) {
         console.log(`skipped!`)
