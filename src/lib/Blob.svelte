@@ -1,62 +1,63 @@
 <script>
-  import { onMount } from 'svelte'
+  import { onDestroy, onMount } from 'svelte'
 
   /** @type {HTMLElement} */
   let blob
-  export let speedX = Math.random()
-  export let speedY = Math.random()
+  export let speedX = 1
+  export let speedY = 1
   export let color
 
+  let parentBounds
+  let frame
   function moveBlob() {
     if (blob) {
-      let parentBounds = document
-        .querySelector('[data-blob-container]')
-        .getBoundingClientRect()
       let bounds = blob.getBoundingClientRect()
-      let leftPx = +blob.style.left.split('px')[0]
-      let topPx = +blob.style.top.split('px')[0]
-      if (
-        bounds.x + bounds.width + 5 > parentBounds.right ||
-        bounds.x < parentBounds.left
-      ) {
+      let computed = getComputedStyle(blob)
+      let left = Number(computed.getPropertyValue('--left'))
+      let top = Number(computed.getPropertyValue('--top'))
+      if (left + bounds.width + 50 > parentBounds.right || left <= -5) {
         speedX = -speedX
       }
       if (
-        bounds.y + bounds.height + 5 > parentBounds.bottom ||
-        bounds.y < parentBounds.top
+        top + bounds.height + 5 > parentBounds.bottom ||
+        top < parentBounds.top
       ) {
         speedY = -speedY
       }
 
-      let newLeft = leftPx + speedX
-      let newTop = topPx + speedY
-      blob.style.left = `${newLeft}px`
-      blob.style.top = `${newTop}px`
-      requestAnimationFrame(moveBlob)
+      let newLeft = left + speedX
+      let newTop = top + speedY
+      blob.style.setProperty('--left', newLeft)
+      blob.style.setProperty('--top', newTop)
+
+      frame = requestAnimationFrame(moveBlob)
     }
   }
 
   onMount(() => {
-    let parentBounds = document
-      .querySelector('[data-blob-container]')
-      .getBoundingClientRect()
+    let container = document.querySelector('[data-blob-container]')
+    parentBounds = container.getBoundingClientRect()
     let initialX = Math.floor(Math.random() * parentBounds.width)
-    let initialY = Math.floor(Math.random() * parentBounds.height) - blob.height
-    blob.style.left = `${initialX}px`
-    blob.style.top = `${initialY}px`
+    let initialY = Math.floor(Math.random() * parentBounds.height)
+    blob.style.setProperty('--left', initialX)
+    blob.style.setProperty('--top', initialY)
     blob.style.display = 'block'
+
     moveBlob()
+  })
+
+  onDestroy(() => {
+    cancelAnimationFrame(frame)
   })
 </script>
 
-<div bind:this={blob} class="dvd w-16 h-16 absolute rounded-full p-2 {color}" />
+<div
+  bind:this={blob}
+  style="transform: translate(calc(var(--left) * 1px), calc(var(--top) * 1px))"
+  class="w-16 h-16 absolute rounded-full p-2 {color}"
+/>
 
 <style>
-  @supports not (backdrop-filter: blur(24px)) {
-    div {
-      filter: blur(24px);
-    }
-  }
   div {
     display: none;
   }

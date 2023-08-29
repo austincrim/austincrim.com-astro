@@ -1,5 +1,5 @@
 ---
-import { CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 
 type Props = {
   post: CollectionEntry<'posts'>
@@ -17,7 +17,10 @@ let { post } = Astro.props
       <div
         class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
       >
-        <h3 class="text-xl font-bold tracking-wider underline sm:no-underline">
+        <h3
+          style={`view-transition-name: ${post.slug}-title`}
+          class="text-xl font-bold tracking-wider underline sm:no-underline"
+        >
           {post.data.title}
         </h3>
         <div class="flex flex-col md:items-end md:pl-2">

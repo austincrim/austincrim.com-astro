@@ -1,12 +1,12 @@
 ---
-import Blob from './Blob.svelte'
-import { RightArrow } from './Icons.js'
+import Blob from "./Blob.svelte"
+import { RightArrow } from "./Icons.js"
 ---
 
 <div
   class="flex flex-col justify-between sm:items-end sm:flex-row my-20 space-y-10"
 >
-  <div class="flex flex-col sm:w-2/3">
+  <div class="flex flex-col gap-4 sm:w-2/3">
     <h1 class="text-5xl leading-tight">
       <span class="text-gray-700">Hi, I'm</span>
       <span
@@ -15,7 +15,7 @@ import { RightArrow } from './Icons.js'
         Austin Crim
       </span>
     </h1>
-    <h2 class="max-w-lg mt-8 text-3xl font-light text-gray-700">
+    <h2 class="max-w-lg text-3xl font-light text-gray-700">
       I build things for the web.
     </h2>
   </div>
@@ -41,8 +41,7 @@ import { RightArrow } from './Icons.js'
   <Blob client:load color="bg-indigo-200" />
   <p class="text-xl leading-loose max-w-[80ch] relative p-6 backdrop-blur-xl">
     I started out as a 19-year old COBOL programmer and now I work on the web.
-    Chat with me about Svelte,
-    <a class="link" href="https://perusingtheplatform.com">web APIs</a>, or
-    guitars.
+    Chat with me about <a class="link" href="https://svelte.dev">Svelte</a>,
+    guitars, and making the web better.
   </p>
 </div>
