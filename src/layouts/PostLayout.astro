@@ -37,8 +37,15 @@ let { frontmatter } = Astro.props
         >
           {frontmatter.title}
         </h1>
-        <span class="text-lg">{frontmatter.lede}</span>
-        <span class="text-gray-700">
+        <span
+          class="text-lg"
+          style={`view-transition-name: ${frontmatter.slug}-lede`}
+          >{frontmatter.lede}</span
+        >
+        <span
+          class="text-gray-700"
+          style={`view-transition-name: ${frontmatter.slug}-date`}
+        >
           {frontmatter.datePublished.toLocaleDateString('en-US')}
         </span>
       </div>

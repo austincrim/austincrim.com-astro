@@ -2,5 +2,6 @@
   "title": "Svelte Summit 2022",
   "description": "I had the pleasure of giving a talk at the first in-person Svelte Summit in Stockholm",
   "projectUrl": "https://youtu.be/A8jkJTWacow?t=11088",
-  "type": "content"
+  "type": "content",
+  "order": 1
 }

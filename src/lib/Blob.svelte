@@ -3,8 +3,8 @@
 
   /** @type {HTMLElement} */
   let blob
-  export let speedX = 1
-  export let speedY = 1
+  export let speedX = Math.random() > 0.5 ? -1 : 1
+  export let speedY = Math.random() > 0.5 ? -1 : 1
   export let color
 
   let parentBounds
@@ -44,10 +44,6 @@
     blob.style.display = 'block'
 
     moveBlob()
-  })
-
-  onDestroy(() => {
-    cancelAnimationFrame(frame)
   })
 </script>
 

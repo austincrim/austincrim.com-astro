@@ -3,5 +3,6 @@
   "description": "A full-stack Markdown note taking app. Next.js + react-query + Prisma + TailwindCSS.",
   "sourceUrl": "https://github.com/austincrim/notarize-react",
   "projectUrl": "https://notarize-react.vercel.app/",
-  "type": "oss"
+  "type": "oss",
+  "order": 5
 }

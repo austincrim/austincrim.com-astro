@@ -46,6 +46,12 @@ h6,
   background-size: 200% 200%;
 }
 
+@media (prefers-reduced-motion) {
+  ::view-transition-group(*) {
+    animation-duration: 0.001s;
+  }
+}
+
 @media (hover: hover) {
   a:hover .fancy-gradient,
   a:focus-visible .fancy-gradient {

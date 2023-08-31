@@ -23,14 +23,18 @@ let { post } = Astro.props
         >
           {post.data.title}
         </h3>
-        <div class="flex flex-col md:items-end md:pl-2">
-          <span class="text-gray-700">
-            {post.data.datePublished.toLocaleDateString()}
-          </span>
-        </div>
       </div>
-      <p class="max-w-3xl text-gray-700 leading-8">
+      <p
+        class="max-w-3xl text-gray-700 leading-8"
+        style={`view-transition-name: ${post.slug}-lede`}
+      >
         {post.data.lede}
+      </p>
+      <p
+        class="text-gray-700"
+        style={`view-transition-name: ${post.slug}-date`}
+      >
+        {post.data.datePublished.toLocaleDateString()}
       </p>
     </div>
   </article>

@@ -9,9 +9,8 @@ import path from 'path'
 async function main() {
   const browser = await puppeteer.launch({
     args: chrome.args,
-    executablePath:
-      '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    headless: 'new'
+    executablePath: await chrome.executablePath,
+    headless: 'new',
   })
 
   let dirs = await fs.readdir('src/content/posts')
@@ -21,11 +20,11 @@ async function main() {
       let page = await browser.newPage()
       await page.setViewport({ width: 1200, height: 627 })
       await page.goto(`http://localhost:3000/og/${url}`, {
-        waitUntil: 'networkidle0'
+        waitUntil: 'networkidle0',
       })
       let buffer = await page.screenshot({
         type: 'png',
-        clip: { x: 0, y: 0, width: 1200, height: 630 }
+        clip: { x: 0, y: 0, width: 1200, height: 630 },
       })
 
       let imagePath = path.join('public', 'og', `${url}.png`)

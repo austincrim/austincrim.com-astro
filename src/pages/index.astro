@@ -14,10 +14,12 @@ let posts = (
   })
 )
   .sort(
-    (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf()
+    (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
   )
   .slice(0, 3)
-let projects = await getCollection('projects')
+let projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+)
 ---
 
 <Layout title="Austin Crim | building for the web">
