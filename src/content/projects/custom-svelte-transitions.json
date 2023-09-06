@@ -1,0 +1,7 @@
+{
+  "title": "How to Build Your First Custom Svelte Transition (for CSS Tricks)",
+  "description": "Understanding and build a custom transition directive in Svelte.",
+  "projectUrl": "https://css-tricks.com/making-your-first-custom-svelte-transition",
+  "type": "content",
+  "order": 4
+}

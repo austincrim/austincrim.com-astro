@@ -24,6 +24,7 @@
   "dependencies": {
     "@astrojs/markdoc": "^0.5.0",
     "@astrojs/rss": "^3.0.0",
-    "@fontsource/merriweather": "^4.5.14"
+    "@fontsource/merriweather": "^4.5.14",
+    "markdown-it": "^13.0.1"
   }
 }
