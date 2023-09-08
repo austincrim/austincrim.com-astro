@@ -19,19 +19,19 @@ let { post } = Astro.props
       >
         <h3
           style={`view-transition-name: ${post.slug}-title`}
-          class="text-xl font-bold tracking-wider underline sm:no-underline"
+          class="text-xl font-bold tracking-wider underline sm:no-underline w-fit"
         >
           {post.data.title}
         </h3>
       </div>
       <p
-        class="max-w-3xl text-gray-700 leading-8"
+        class="max-w-3xl text-gray-700 leading-8 w-fit"
         style={`view-transition-name: ${post.slug}-lede`}
       >
         {post.data.lede}
       </p>
       <p
-        class="text-gray-700"
+        class="text-gray-700 w-fit"
         style={`view-transition-name: ${post.slug}-date`}
       >
         {post.data.datePublished.toLocaleDateString()}

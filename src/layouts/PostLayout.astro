@@ -33,17 +33,17 @@ let { frontmatter } = Astro.props
       >
         <h1
           style={`view-transition-name: ${frontmatter.slug}-title`}
-          class="inline text-3xl text-gray-800"
+          class="inline text-3xl w-fit text-gray-800"
         >
           {frontmatter.title}
         </h1>
         <span
-          class="text-lg"
+          class="text-lg w-fit"
           style={`view-transition-name: ${frontmatter.slug}-lede`}
           >{frontmatter.lede}</span
         >
         <span
-          class="text-gray-700"
+          class="text-gray-700 w-fit"
           style={`view-transition-name: ${frontmatter.slug}-date`}
         >
           {frontmatter.datePublished.toLocaleDateString('en-US')}
