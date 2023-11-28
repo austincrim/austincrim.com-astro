@@ -1,15 +1,12 @@
 // @ts-check
 
 import puppeteer from 'puppeteer-core'
-import chrome from 'chrome-aws-lambda'
-import fsSync from 'fs'
 import fs from 'fs/promises'
 import path from 'path'
 
 async function main() {
   const browser = await puppeteer.launch({
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
+    channel: 'chrome',
     headless: 'new',
   })
 
@@ -19,7 +16,7 @@ async function main() {
       let url = slug.replace('.md', '')
       let page = await browser.newPage()
       await page.setViewport({ width: 1200, height: 627 })
-      await page.goto(`http://localhost:3000/og/${url}`, {
+      await page.goto(`http://localhost:4321/og/${url}`, {
         waitUntil: 'networkidle0',
       })
       let buffer = await page.screenshot({
@@ -29,13 +26,9 @@ async function main() {
 
       let imagePath = path.join('public', 'og', `${url}.png`)
 
-      if (fsSync.existsSync(imagePath)) {
-        console.log(`skipped!`)
-      } else {
-        if (buffer) {
-          await fs.writeFile(imagePath, buffer)
-          console.log(`wrote ${imagePath}`)
-        }
+      if (buffer) {
+        await fs.writeFile(imagePath, buffer)
+        console.log(`wrote ${imagePath}`)
       }
       await page.close()
     })
