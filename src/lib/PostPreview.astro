@@ -7,34 +7,37 @@ type Props = {
 let { post } = Astro.props
 ---
 
-<a class="group block relative text-gray-900" href={`/blog/${post.slug}`}>
+<a
+  class="group block relative text-slate-900 dark:text-slate-200"
+  href={`/blog/${post.slug}`}
+>
   <article class="relative z-10 flex items-center">
     <div
-      class="flex flex-col flex-grow p-8 space-y-1 border border-gray-300 rounded bg-white/50"
+      class="flex flex-col flex-grow p-8 space-y-1 border border-slate-300 dark:border-slate-800 rounded bg-white/50 dark:bg-slate-900"
     >
       <div
         class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
       >
         <h3
           style={`view-transition-name: ${post.slug}-title`}
-          class="text-xl font-bold tracking-wider underline sm:no-underline w-fit"
+          class="text-xl font-bold tracking-wider underline sm:no-underline w-fit dark:group-hover:text-blue-300 dark:transition"
         >
           {post.data.title}
         </h3>
       </div>
       <p
-        class="max-w-3xl text-gray-700 leading-8 w-fit"
+        class="max-w-3xl text-slate-700 dark:text-slate-300 leading-8 w-fit"
         style={`view-transition-name: ${post.slug}-lede`}
       >
         {post.data.lede}
       </p>
       <p
-        class="text-gray-700 w-fit"
+        class="text-slate-700 dark:text-slate-300 w-fit"
         style={`view-transition-name: ${post.slug}-date`}
       >
         {post.data.datePublished.toLocaleDateString()}
       </p>
     </div>
   </article>
-  <div class="fancy-gradient shadow absolute rounded inset-0"></div>
+  <div class="dark:hidden fancy-gradient shadow absolute rounded inset-0"></div>
 </a>

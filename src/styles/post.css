@@ -27,7 +27,14 @@
     slide-in 250ms ease-out 100ms;
 }
 
-.astro-code {
+ .astro-code {
   border: 1px solid lightgrey;
   background-color: white !important;
+} 
+
+@media (prefers-color-scheme: dark) {
+  .astro-code {
+    border: 1px solid theme('colors.slate.600');
+    background-color: theme('colors.slate.200') !important;
+  }
 }

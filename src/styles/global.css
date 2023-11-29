@@ -35,7 +35,7 @@ a[href]:focus-visible {
     whitesmoke,
     theme('colors.blue.200') 20%,
     whitesmoke 50%,
-    theme(colors.indigo.200),
+    theme('colors.indigo.200'),
     whitesmoke
   );
 }
@@ -49,6 +49,30 @@ a[href]:focus-visible {
 .fancy-gradient {
   background: var(--yummy);
   background-size: 200% 200%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --yummy: linear-gradient(
+    140deg,
+    theme('colors.slate.700'),
+    theme('colors.slate.500') 20%,
+    theme('colors.slate.700') 50%,
+    theme('colors.slate.800'),
+    theme('colors.slate.900')
+  ); 
+  }
+  .link {
+    @apply text-blue-300;
+  }
+  
+  .link:hover {
+    @apply text-blue-400;
+  }
+  
+  .link:visited {
+    @apply text-violet-400;
+  }
 }
 
 @media (prefers-reduced-motion) {

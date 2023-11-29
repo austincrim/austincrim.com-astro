@@ -1,23 +1,23 @@
 ---
-import { CollectionEntry } from 'astro:content'
+import { type CollectionEntry } from 'astro:content'
 
 type Props = {
   project: CollectionEntry<'projects'>
 }
 const { project } = Astro.props
 let classMap = {
-  oss: 'bg-sky-100 text-sky-800 border border-sky-200',
-  content: 'bg-fuchsia-100 text-fuchsia-800 border border-fuchsia-200'
+  oss: 'bg-sky-100 text-sky-800 border border-current',
+  content: 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200',
 }
 ---
 
 <div
   data-type={project.data.type}
-  class="flex flex-col justify-between gap-6 px-6 py-8 border rounded-md shadow-md border-slate-200 text-slate-800"
+  class="flex flex-col justify-between gap-6 px-6 py-8 border rounded-md shadow-md border-current"
 >
   <div class="flex flex-col gap-6">
     <div class="flex items-start justify-between gap-2">
-      <h3 class="text-xl font-semibold tracking-wider">
+      <h3 class="text-xl font-semibold tracking-wider dark:text-slate-200">
         {project.data.title}
       </h3>
       <span
@@ -28,16 +28,15 @@ let classMap = {
         {project.data.type}
       </span>
     </div>
-    <div class="max-w-xl text-gray-700">{project.data.description}</div>
+    <div class="max-w-xl text-slate-700 dark:text-slate-300">
+      {project.data.description}
+    </div>
   </div>
 
   <div class="flex items-center gap-4">
     {
       project.data.projectUrl ? (
-        <a
-          class="font-semibold text-blue-800 transition-colors hover:text-blue-400"
-          href={project.data.projectUrl}
-        >
+        <a class="link" href={project.data.projectUrl}>
           View
         </a>
       ) : null
@@ -45,10 +44,7 @@ let classMap = {
 
     {
       project.data.sourceUrl ? (
-        <a
-          href={project.data.sourceUrl}
-          class="text-blue-800 transition-colors hover:text-blue-400"
-        >
+        <a href={project.data.sourceUrl} class="link">
           Code
         </a>
       ) : null

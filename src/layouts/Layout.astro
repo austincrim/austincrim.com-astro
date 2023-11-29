@@ -9,8 +9,8 @@ let route = Astro.url.pathname
 let activeLink = route.includes('/blog') ? 'blog' : 'home'
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="dark:bg-slate-900 dark:text-slate-200" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -30,5 +30,6 @@ let activeLink = route.includes('/blog') ? 'blog' : 'home'
     <Nav activeLink={activeLink} />
     <slot />
   </div>
+
 
 </html>

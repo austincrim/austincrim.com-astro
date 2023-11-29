@@ -29,21 +29,21 @@ let { frontmatter } = Astro.props
       class="gradient-container sm:rounded-xl sm:p-1 sm:mx-0 py-1 -mx-10 shadow-md"
     >
       <div
-        class="flex flex-col space-y-4 heading p-10 bg-white bg-opacity-60 sm:rounded-lg text-slate-600"
+        class="flex flex-col space-y-4 heading p-10 bg-white dark:bg-slate-800 bg-opacity-60 sm:rounded-lg text-slate-600"
       >
         <h1
           style={`view-transition-name: ${frontmatter.slug}-title`}
-          class="inline text-3xl w-fit text-gray-800"
+          class="inline text-3xl w-fit text-slate-700 dark:text-slate-200"
         >
           {frontmatter.title}
         </h1>
         <span
-          class="text-lg w-fit"
+          class="text-lg w-fit text-slate-700 dark:text-slate-300"
           style={`view-transition-name: ${frontmatter.slug}-lede`}
           >{frontmatter.lede}</span
         >
         <span
-          class="text-gray-700 w-fit"
+          class="text-slate-700 dark:text-slate-300 w-fit"
           style={`view-transition-name: ${frontmatter.slug}-date`}
         >
           {frontmatter.datePublished.toLocaleDateString('en-US')}
@@ -51,7 +51,7 @@ let { frontmatter } = Astro.props
       </div>
     </div>
     <div
-      class="leading-loose prose max-w-none prose-code:break-words article text-lg"
+      class="leading-loose prose max-w-none prose-code:break-words dark:text-slate-200 dark:prose-headings:text-slate-200 dark:prose-code:text-slate-200 dark:prose-a:text-blue-300 dark:prose-strong:text-slate-200 article text-lg"
     >
       <slot />
     </div>
