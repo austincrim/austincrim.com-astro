@@ -17,10 +17,15 @@ let { frontmatter } = Astro.props
     content={`https://austincrim.com/og/${frontmatter.slug}.png`}
     slot="og"
   />
-  <meta name="twitter:card" content="summary_large_image" slot="og" />
   <meta
     name="og:url"
     content={`https://austincrim.com/${frontmatter.slug}`}
+    slot="og"
+  />
+  <meta name="twitter:card" content="summary_large_image" slot="og" />
+  <meta
+    name="twitter:image"
+    content={`https://austincrim.com/og/${frontmatter.slug}.png`}
     slot="og"
   />
 
