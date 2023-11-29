@@ -71,7 +71,7 @@ const { subscribe, set, update } = writable(0)
 
 // this is still a valid Svelte store
 export const count = {
-  subscribe
+  subscribe,
 }
 ```
 
@@ -95,7 +95,7 @@ export const count = {
   },
   reset() {
     set(0)
-  }
+  },
 }
 ```
 
@@ -172,7 +172,7 @@ export function local(key, initialValue) {
       const newValue = callback(currentValue)
 
       sync(key, newValue)
-    }
+    },
   }
 }
 ```
