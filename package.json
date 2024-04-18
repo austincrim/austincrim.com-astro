@@ -12,20 +12,20 @@
     "og": "node ./scripts/og-image.js"
   },
   "devDependencies": {
-    "@astrojs/svelte": "^4.0.0",
-    "@astrojs/tailwind": "^5.0.0",
-    "@tailwindcss/typography": "^0.5.9",
-    "astro": "^3.6.3",
+    "@astrojs/svelte": "^5.4.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@tailwindcss/typography": "^0.5.12",
+    "astro": "^4.6.2",
     "chrome-aws-lambda": "^10.1.0",
-    "puppeteer-core": "^21.1.1",
-    "svelte": "^4.2.0",
-    "tailwindcss": "^3.3.3",
-    "typescript": "^5.2.2"
+    "puppeteer-core": "^22.6.5",
+    "svelte": "^4.2.15",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@astrojs/markdoc": "^0.5.0",
-    "@astrojs/rss": "^3.0.0",
-    "@fontsource/merriweather": "^4.5.14",
-    "markdown-it": "^13.0.1"
+    "@astrojs/markdoc": "^0.10.0",
+    "@astrojs/rss": "^4.0.5",
+    "@fontsource/merriweather": "^5.0.12",
+    "markdown-it": "^14.1.0"
   }
 }
