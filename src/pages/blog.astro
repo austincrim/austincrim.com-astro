@@ -5,10 +5,10 @@ import PostPreview from '../lib/PostPreview.astro'
 
 const posts = await getCollection(
   'posts',
-  (e) => import.meta.env.DEV || !e.data.draft,
+  (e) => import.meta.env.DEV || !e.data.draft
 )
 posts.sort(
-  (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
+  (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf()
 )
 ---
 
@@ -30,8 +30,7 @@ posts.sort(
   />
   <meta name="og:url" content="https://austincrim.com" slot="og" />
   <div class="flex flex-col max-w-5xl mx-auto my-20 md:rounded-lg">
-    <h3 class="text-4xl text-blue-800 dark:text-blue-300">Posts</h3>
-    <ul class="flex flex-col gap-20 mt-12">
+    <ul class="flex flex-col gap-24">
       {
         posts.map((post) => (
           <li style={`view-transition-name: ${post.slug}`}>
