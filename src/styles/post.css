@@ -27,14 +27,20 @@
     slide-in 250ms ease-out 100ms;
 }
 
- .astro-code {
-  border: 1px solid lightgrey;
-  background-color: white !important;
-} 
+.astro-code {
+  border: 1px solid theme('colors.slate.200');
+}
 
 @media (prefers-color-scheme: dark) {
   .astro-code {
-    border: 1px solid theme('colors.slate.600');
-    background-color: theme('colors.slate.200') !important;
+    border: 1px solid theme('colors.slate.700') !important;
+  }
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
   }
 }
