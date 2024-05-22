@@ -7,7 +7,7 @@ import path from 'path'
 async function main() {
   const browser = await puppeteer.launch({
     channel: 'chrome',
-    headless: 'new',
+    headless: true,
   })
 
   let dirs = await fs.readdir('src/content/posts')
