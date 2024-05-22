@@ -7,7 +7,7 @@ draft: false
 
 ## Why?
 
-In January of 2024, I started a new, old job at Principal Financial Group. I worked there previously on web (and COBOL) stuff but in my return I joined the mobile app team. I have used React extensively without ever touching React Native. Now, I'm learning and cursing constantly, so I decided to write some stuff down here..
+In January of 2024, I started a new, old job at Principal Financial Group. I worked there previously on web (and COBOL) stuff but in my return I joined the mobile app team. I have used React extensively without ever touching React Native. Now, I'm learning and cursing constantly, so I decided to write some stuff down here.
 
 ## React is incredible
 
@@ -17,7 +17,7 @@ I used React every single time.
 
 "Write once, run everywhere" is a cliche at this point, and I have plenty of gripes with React, but the power of the React model is proven every day with stories like this. `useState` is the same everywhere and that's more valuable to me now than ever, as any commonality with my web background empowers me in my new role today.
 
-## The native toolchain <s>sucks</s> is hard
+## The native toolchain <s>sucks</s> is hard</h2>
 
 If you thought npm dependency hell was bad, React Native is truly the 7th circle.
 
