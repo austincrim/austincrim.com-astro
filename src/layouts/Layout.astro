@@ -26,7 +26,7 @@ let activeLink = route.includes('/blog') ? 'blog' : 'home'
       ) : null
     }
   </head>
-  <div class="px-10 py-4 mx-auto lg:max-w-4xl md:max-w-3xl sm:max-w-2xl">
+  <div class="px-10 mx-auto lg:max-w-4xl md:max-w-3xl sm:max-w-2xl">
     <Nav activeLink={activeLink} />
     <slot />
   </div>

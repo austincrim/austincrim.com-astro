@@ -10,7 +10,7 @@ h6,
 
 a[href]:focus-visible {
   outline: none;
-  @apply ring-2 ring-offset-2 ring-blue-500 rounded transition
+  @apply ring-2 ring-offset-2 ring-blue-500 rounded transition;
 }
 
 .link {
@@ -54,22 +54,20 @@ a[href]:focus-visible {
 @media (prefers-color-scheme: dark) {
   :root {
     --yummy: linear-gradient(
-    140deg,
-    theme('colors.slate.700'),
-    theme('colors.slate.500') 20%,
-    theme('colors.slate.700') 50%,
-    theme('colors.slate.800'),
-    theme('colors.slate.900')
-  ); 
+      140deg,
+      theme('colors.slate.700'),
+      theme('colors.slate.500') 20%,
+      theme('colors.slate.700') 50%
+    );
   }
   .link {
     @apply text-blue-300;
   }
-  
+
   .link:hover {
     @apply text-blue-400;
   }
-  
+
   .link:visited {
     @apply text-violet-400;
   }
@@ -78,24 +76,5 @@ a[href]:focus-visible {
 @media (prefers-reduced-motion) {
   ::view-transition-group(*) {
     animation-duration: 0.001s;
-  }
-}
-
-@media (hover: hover) {
-  a:hover .fancy-gradient,
-  a:focus-visible .fancy-gradient {
-    animation: shine 4s ease-in-out infinite alternate-reverse;
-  }
-}
-
-@media (pointer: none) {
-  .fancy-gradient {
-    animation: shine 7s ease-in-out infinite alternate-reverse;
-  }
-}
-
-@keyframes shine {
-  50% {
-    background-position: 100% 100%;
   }
 }

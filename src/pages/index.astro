@@ -7,6 +7,7 @@ import PostPreview from '../lib/PostPreview.astro'
 import ProjectCard from '../lib/ProjectCard.astro'
 import { RightArrow } from '../lib/Icons'
 import { getCollection } from 'astro:content'
+import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from '../lib/Icons'
 
 let posts = (
   await getCollection('posts', (e) => {
@@ -14,11 +15,11 @@ let posts = (
   })
 )
   .sort(
-    (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf(),
+    (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf()
   )
   .slice(0, 3)
 let projects = (await getCollection('projects')).sort(
-  (a, b) => a.data.order - b.data.order,
+  (a, b) => a.data.order - b.data.order
 )
 ---
 
@@ -71,11 +72,36 @@ let projects = (await getCollection('projects')).sort(
   </main>
 
   <Footer>
-    <div class="flex flex-col items-center gap-4">
+    <div class="flex flex-col items-center gap-6 mb-12">
       <a class="font-medium underline" href="mailto:aust.crim@gmail.com">
         Say Hi
       </a>
-      <span>Designed and developed by Austin Crim</span>
+      <div class="flex justify-center gap-8 items-baseline">
+        <a
+          aria-label="austin crim's rss feed"
+          href="/rss.xml"
+          class="inline-block w-8 h-8 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
+          set:html={Rss()}
+        />
+        <a
+          aria-label="austin crim's github profile"
+          href="https://github.com/austincrim"
+          class="inline-block w-8 h-8 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
+          set:html={GitHubLogo()}
+        />
+        <a
+          aria-label="austin crim's twitter profile"
+          href="https://twitter.com/crim_codes"
+          class="inline-block w-8 h-8 transition-colors text-[#1D9BF0] hover:text-[#2EACF1]"
+          set:html={TwitterLogo()}
+        />
+        <a
+          aria-label="austin crim's youtube channel"
+          href="https://youtube.com/austincrim"
+          class="inline-block w-8 h-8 transition-colors text-[#dd0000] hover:text-[#ee0000]"
+          set:html={YoutubeLogo()}
+        />
+      </div>
     </div>
   </Footer>
 </Layout>

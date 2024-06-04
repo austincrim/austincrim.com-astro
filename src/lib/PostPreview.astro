@@ -14,10 +14,10 @@ let { post } = Astro.props
     <div
       class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
     >
-      <a href={`/blog/${post.slug}`}>
+      <a class="link" href={`/blog/${post.slug}`}>
         <h3
           style={`view-transition-name: ${post.slug}-title`}
-          class="text-xl font-bold underline underline-offset-4 tracking-wider w-fit"
+          class="text-xl font-bold tracking-wider w-fit"
         >
           {post.data.title}
         </h3>
