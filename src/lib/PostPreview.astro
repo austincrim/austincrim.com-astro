@@ -15,24 +15,15 @@ let { post } = Astro.props
       class="flex flex-col justify-between space-y-2 md:space-y-0 md:space-x-2 md:flex-row md:items-baseline"
     >
       <a class="link" href={`/blog/${post.slug}`}>
-        <h3
-          style={`view-transition-name: ${post.slug}-title`}
-          class="text-xl font-bold tracking-wider w-fit"
-        >
+        <h3 class="text-xl font-bold tracking-wider w-fit">
           {post.data.title}
         </h3>
       </a>
     </div>
-    <p
-      class="max-w-3xl text-slate-700 dark:text-slate-300 leading-8 w-fit"
-      style={`view-transition-name: ${post.slug}-lede`}
-    >
+    <p class="max-w-3xl text-slate-700 dark:text-slate-300 leading-8 w-fit">
       {post.data.lede}
     </p>
-    <p
-      class="text-slate-700 dark:text-slate-300 w-fit"
-      style={`view-transition-name: ${post.slug}-date`}
-    >
+    <p class="text-slate-700 dark:text-slate-300 w-fit">
       {post.data.datePublished.toLocaleDateString()}
     </p>
   </div>

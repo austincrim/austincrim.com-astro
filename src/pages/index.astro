@@ -47,7 +47,7 @@ let projects = (await getCollection('projects')).sort(
         <ul class="flex flex-col gap-20">
           {
             posts.slice(0, 3).map((post) => (
-              <li style={`view-transition-name: ${post.slug}`}>
+              <li>
                 <PostPreview {post} />
               </li>
             ))

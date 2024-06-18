@@ -5,26 +5,41 @@ let { activeLink } = Astro.props
 ---
 
 <nav class="text-muted lg:max-w-5xl mx-auto sm:max-w-3xl mt-12 relative">
-  <div
-    class="flex flex-col sm:flex-row items-center sm:items-baseline justify-between space-y-4"
-  >
-    <div class="text-xl flex justify-center sm:inline">
+  <div class="flex items-center justify-between">
+    <div class="text-xl flex justify-center items-baseline gap-8">
+      {
+        activeLink !== 'home' && (
+          <span
+            style="view-transition-name: austin"
+            class="relative border-indigo-100 -mr-3"
+          >
+            <a
+              href="/"
+              class="text-2xl font-merriweather leading-tight tracking-wide text-transparent hero-gradient bg-clip-text"
+            >
+              Austin Crim
+            </a>
+          </span>
+        )
+      }
       <a
-        class="inline-block transition-colors hover:text-muted-hover mr-6 sm:mr-14"
+        class="inline-block transition-colors hover:text-muted-hover"
         class:list={{ active: activeLink === 'home' }}
+        style="view-transition-name: home"
         href="/"
       >
         Home
       </a>
       <a
         class="inline-block transition-colors hover:text-muted-hover"
-        href="/blog"
         class:list={{ active: activeLink === 'blog' }}
+        style="view-transition-name: blog"
+        href="/blog"
       >
         Blog
       </a>
     </div>
-    <div class="sm:flex hidden justify-center gap-8 items-baseline">
+    <div class="sm:flex hidden items-center justify-center gap-8">
       <a
         aria-label="austin crim's rss feed"
         href="/rss.xml"
@@ -46,7 +61,7 @@ let { activeLink } = Astro.props
       <a
         aria-label="austin crim's youtube channel"
         href="https://youtube.com/austincrim"
-        class="inline-block w-8 h-8 transition-colors text-[#dd0000] hover:text-[#ee0000]"
+        class="inline-block w-10 h-10 transition-colors text-[#dd0000] hover:text-[#ee0000]"
         set:html={YoutubeLogo()}
       />
     </div>
@@ -57,6 +72,5 @@ let { activeLink } = Astro.props
   .active {
     border-bottom-width: theme('borderWidth.2');
     border-bottom-color: theme('borderColor.blue.500');
-    padding-bottom: theme('padding.1');
   }
 </style>

@@ -78,3 +78,7 @@ a[href]:focus-visible {
     animation-duration: 0.001s;
   }
 }
+
+@view-transition {
+  navigation: auto;
+}
