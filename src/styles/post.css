@@ -23,17 +23,18 @@
 }
 
 .article {
-  animation: fade-in 250ms ease-out 100ms backwards,
+  animation:
+    fade-in 250ms ease-out 100ms backwards,
     slide-in 250ms ease-out 100ms;
 }
 
 .astro-code {
-  border: 1px solid theme('colors.slate.200');
+  border: 1px solid theme("colors.slate.200");
 }
 
 @media (prefers-color-scheme: dark) {
   .astro-code {
-    border: 1px solid theme('colors.slate.700') !important;
+    border: 1px solid theme("colors.slate.700") !important;
   }
   .astro-code,
   .astro-code span {

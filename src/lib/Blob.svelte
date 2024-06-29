@@ -1,5 +1,5 @@
 <script>
-  import { onDestroy, onMount } from 'svelte'
+  import { onMount } from "svelte"
 
   /** @type {HTMLElement} */
   let blob
@@ -13,8 +13,8 @@
     if (blob) {
       let bounds = blob.getBoundingClientRect()
       let computed = getComputedStyle(blob)
-      let left = Number(computed.getPropertyValue('--left'))
-      let top = Number(computed.getPropertyValue('--top'))
+      let left = Number(computed.getPropertyValue("--left"))
+      let top = Number(computed.getPropertyValue("--top"))
       if (left + bounds.width + 50 > parentBounds.right || left <= -5) {
         speedX = -speedX
       }
@@ -27,21 +27,21 @@
 
       let newLeft = left + speedX
       let newTop = top + speedY
-      blob.style.setProperty('--left', newLeft)
-      blob.style.setProperty('--top', newTop)
+      blob.style.setProperty("--left", newLeft)
+      blob.style.setProperty("--top", newTop)
 
       frame = requestAnimationFrame(moveBlob)
     }
   }
 
   onMount(() => {
-    let container = document.querySelector('[data-blob-container]')
+    let container = document.querySelector("[data-blob-container]")
     parentBounds = container.getBoundingClientRect()
     let initialX = Math.floor(Math.random() * parentBounds.width)
     let initialY = Math.floor(Math.random() * parentBounds.height)
-    blob.style.setProperty('--left', initialX)
-    blob.style.setProperty('--top', initialY)
-    blob.style.display = 'block'
+    blob.style.setProperty("--left", initialX)
+    blob.style.setProperty("--top", initialY)
+    blob.style.display = "block"
 
     moveBlob()
   })

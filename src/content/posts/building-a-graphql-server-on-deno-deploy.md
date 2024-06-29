@@ -17,8 +17,8 @@ draft: false
 Let's start by creating the simplest Deno Deploy project by creating an `index.js` (or `.ts`) file in our repo and adding a fetch event listener.
 
 ```javascript
-addEventListener('fetch', (event) => {
-  event.respondWith(new Response('hello world!'))
+addEventListener("fetch", (event) => {
+  event.respondWith(new Response("hello world!"))
 })
 ```
 
@@ -75,21 +75,21 @@ We do this outside of our event listener to prevent this code from running on ev
 Let's write a resolver that will handle our `Note` type. We can just hardcode something to make it easier on ourselves:
 
 ```javascript
-import { buildSchema } from 'https://raw.githubusercontent.com/adelsz/graphql-deno/v15.0.0/mod.ts'
+import { buildSchema } from "https://raw.githubusercontent.com/adelsz/graphql-deno/v15.0.0/mod.ts"
 
-const schemaString = await Deno.readTextFile('./schema.gql')
+const schemaString = await Deno.readTextFile("./schema.gql")
 const schema = buildSchema(schemaString)
 
 const notes = [
   {
-    id: '1',
-    title: 'Hello deno deploy!',
-    content: 'This is an example note'
+    id: "1",
+    title: "Hello deno deploy!",
+    content: "This is an example note"
   },
   {
-    id: '2',
-    title: 'Hello graphql!',
-    content: 'This is a different note'
+    id: "2",
+    title: "Hello graphql!",
+    content: "This is a different note"
   }
 ]
 const resolvers = {
@@ -98,7 +98,7 @@ const resolvers = {
   }
 }
 
-addEventListener('fetch', (event) => {
+addEventListener("fetch", (event) => {
   event.respondWith(new Response(schemaString))
 })
 ```
@@ -113,11 +113,11 @@ We will handle the common case of a `POST` request with a JSON body, specificall
 import {
   buildSchema,
   graphql
-} from 'https://raw.githubusercontent.com/adelsz/graphql-deno/v15.0.0/mod.ts'
+} from "https://raw.githubusercontent.com/adelsz/graphql-deno/v15.0.0/mod.ts"
 
 // setup code...
 
-addEventListener('fetch', async (event) => {
+addEventListener("fetch", async (event) => {
   const { query } = await event.request.json()
   const result = await graphql(schema, query, resolvers)
 
@@ -141,21 +141,21 @@ Here's the full code:
 import {
   buildSchema,
   graphql
-} from 'https://raw.githubusercontent.com/adelsz/graphql-deno/v15.0.0/mod.ts'
+} from "https://raw.githubusercontent.com/adelsz/graphql-deno/v15.0.0/mod.ts"
 
-const schemaString = await Deno.readTextFile('./schema.gql')
+const schemaString = await Deno.readTextFile("./schema.gql")
 const schema = buildSchema(schemaString)
 
 const notes = [
   {
-    id: '1',
-    title: 'Hello deno!',
-    content: 'This is an example note'
+    id: "1",
+    title: "Hello deno!",
+    content: "This is an example note"
   },
   {
-    id: '2',
-    title: 'Hello graphql!',
-    content: 'This is a different note'
+    id: "2",
+    title: "Hello graphql!",
+    content: "This is a different note"
   }
 ]
 const resolvers = {
@@ -164,7 +164,7 @@ const resolvers = {
   }
 }
 
-addEventListener('fetch', async (event) => {
+addEventListener("fetch", async (event) => {
   const { query } = await event.request.json()
   const result = await graphql(schema, query, resolvers)
 

@@ -1,5 +1,5 @@
 ---
-title: 'JavaScript Dev Does Rust: Statements, expressions, and return values'
+title: "JavaScript Dev Does Rust: Statements, expressions, and return values"
 lede: I have started to dip my toes into Rust-land and I will be jotting down some of my aha’s and gotchas, like this example!
 datePublished: 2021-07-06
 draft: false

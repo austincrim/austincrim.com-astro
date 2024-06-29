@@ -20,7 +20,7 @@ At its core, a `writable` Svelte store (`readable` and `derived` are other types
 Here’s a basic example I adapted from the [Svelte docs](https://svelte.dev/docs#run-time-svelte-store):
 
 ```javascript
-import { writable } from 'svelte/store'
+import { writable } from "svelte/store"
 
 const count = writable(0) // defaults the store value to 0
 
@@ -44,10 +44,10 @@ Stores also have a special sugary syntax when used inside of Svelte components. 
 
 ```html
 <script>
-  import { myStore } from './store.js'
+  import { myStore } from "./store.js"
 
   // sugary syntax for calling `myStore.set('Hello world!')`
-  $myStore = 'Hello world!'
+  $myStore = "Hello world!"
 </script>
 
 <!-- automatically uses the reactive store value, no boilerplate! -->
@@ -64,14 +64,14 @@ As long as an object contains the correct `subscribe` function, it can be used l
 
 ```javascript
 // store.js
-import { writable } from 'svelte/store'
+import { writable } from "svelte/store"
 
 // writable returns a plain object with `subscribe`, `update`, and `set`
 const { subscribe, set, update } = writable(0)
 
 // this is still a valid Svelte store
 export const count = {
-  subscribe,
+  subscribe
 }
 ```
 
@@ -81,7 +81,7 @@ We might not want to **return** `set` or `update`, but we can still **use** them
 
 ```javascript
 // store.js
-import { writable } from 'svelte/store'
+import { writable } from "svelte/store"
 
 const { subscribe, set, update } = writable(0)
 
@@ -95,14 +95,14 @@ export const count = {
   },
   reset() {
     set(0)
-  },
+  }
 }
 ```
 
 ```html
 <script>
   // counter.svelte
-  import { count } from './store.js'
+  import { count } from "./store.js"
 </script>
 
 <h1>The count is {$count}</h1>
@@ -124,9 +124,9 @@ Here’s a custom `readable` store from Svelte maintainer [Geoff Rich](https://t
 ```javascript
 // source https://geoffrich.net/posts/svelte-prefers-reduced-motion-store/
 // annotations my own
-import { readable } from 'svelte/store'
+import { readable } from "svelte/store"
 
-const reducedMotionQuery = '(prefers-reduced-motion: reduce)'
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)"
 const getInitialMotionPreference = () =>
   window.matchMedia(reducedMotionQuery).matches
 
@@ -139,11 +139,11 @@ export const reducedMotion = readable(getInitialMotionPreference(), (set) => {
 
   const mediaQueryList = window.matchMedia(reducedMotionQuery)
   // update store if media query ever changes
-  mediaQueryList.addEventListener('change', updateMotionPreference)
+  mediaQueryList.addEventListener("change", updateMotionPreference)
 
   // cleanup function will run after the last subscriber unsubscribes from store
   return () => {
-    mediaQueryList.removeEventListener('change', updateMotionPreference)
+    mediaQueryList.removeEventListener("change", updateMotionPreference)
   }
 })
 ```
@@ -151,13 +151,13 @@ export const reducedMotion = readable(getInitialMotionPreference(), (set) => {
 This `local` function returns a custom store that syncs the store value to `localStorage`:
 
 ```javascript
-import { writable, get } from 'svelte/store'
+import { writable, get } from "svelte/store"
 
 export function local(key, initialValue) {
   const store = writable(initialValue)
 
   function sync(key, value) {
-    if (typeof localStorage == 'undefined') return
+    if (typeof localStorage == "undefined") return
     store.set(value)
     localStorage.setItem(key, JSON.stringify(value))
   }
@@ -172,7 +172,7 @@ export function local(key, initialValue) {
       const newValue = callback(currentValue)
 
       sync(key, newValue)
-    },
+    }
   }
 }
 ```

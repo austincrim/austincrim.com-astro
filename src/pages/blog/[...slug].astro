@@ -1,9 +1,9 @@
 ---
-import { getCollection } from 'astro:content'
-import PostLayout from '../../layouts/PostLayout.astro'
+import { getCollection } from "astro:content"
+import PostLayout from "../../layouts/PostLayout.astro"
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('posts')
+  const blogEntries = await getCollection("posts")
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry }

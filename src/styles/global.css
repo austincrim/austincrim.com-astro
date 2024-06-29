@@ -5,7 +5,7 @@ h4,
 h5,
 h6,
 .about {
-  font-family: 'Merriweather', sans-serif;
+  font-family: "Merriweather", sans-serif;
 }
 
 a[href]:focus-visible {
@@ -33,16 +33,16 @@ a[href]:focus-visible {
   --yummy: linear-gradient(
     140deg,
     whitesmoke,
-    theme('colors.blue.200') 20%,
+    theme("colors.blue.200") 20%,
     whitesmoke 50%,
-    theme('colors.indigo.200'),
+    theme("colors.indigo.200"),
     whitesmoke
   );
 }
 
 .hero-gradient {
-  --tw-gradient-stops: theme('colors.blue.700'), theme('colors.indigo.300'),
-    theme('colors.blue.400');
+  --tw-gradient-stops: theme("colors.blue.700"), theme("colors.indigo.300"),
+    theme("colors.blue.400");
   background-image: linear-gradient(to top right, var(--tw-gradient-stops));
 }
 
@@ -55,9 +55,9 @@ a[href]:focus-visible {
   :root {
     --yummy: linear-gradient(
       140deg,
-      theme('colors.slate.700'),
-      theme('colors.slate.500') 20%,
-      theme('colors.slate.700') 50%
+      theme("colors.slate.700"),
+      theme("colors.slate.500") 20%,
+      theme("colors.slate.700") 50%
     );
   }
   .link {

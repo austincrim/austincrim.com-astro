@@ -118,7 +118,7 @@ If you've made it this far, congrats! You now have fully functioning themes on y
 function pickTheme(newTheme) {
   if (newTheme === current) return
   document.documentElement.classList.replace(current, newTheme)
-  localStorage.setItem('crimTheme', newTheme)
+  localStorage.setItem("crimTheme", newTheme)
   setCurrent(newTheme)
 }
 ```
@@ -139,8 +139,8 @@ There is one more step we have to do before the whole experience works smoothly.
 if (localStorage.crimTheme) {
   document.documentElement.classList.add(localStorage.crimTheme)
 } else {
-  document.documentElement.classList.add('theme-light')
-  localStorage.setItem('crimTheme', 'theme-light')
+  document.documentElement.classList.add("theme-light")
+  localStorage.setItem("crimTheme", "theme-light")
 }
 ```
 

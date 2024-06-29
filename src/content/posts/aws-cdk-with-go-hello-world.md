@@ -1,5 +1,5 @@
 ---
-title: 'AWS CDK with Go: Hello World'
+title: "AWS CDK with Go: Hello World"
 lede: A quick start and some things to watch out for when using the AWS Cloud Development Kit for Go
 datePublished: 2021-05-10
 draft: false

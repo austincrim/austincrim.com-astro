@@ -7,7 +7,6 @@ export default defineConfig({
   integrations: [svelte(), tailwind()],
   markdown: {
     shikiConfig: {
-      // theme: 'github-light',
       themes: {
         light: 'github-light',
         dark: 'night-owl',

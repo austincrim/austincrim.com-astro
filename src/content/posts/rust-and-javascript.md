@@ -1,5 +1,5 @@
 ---
-title: 'Rust + JavaScript: a Love Story'
+title: "Rust + JavaScript: a Love Story"
 lede: Learn how to run Rust functions from your JavaScript code using the new hotness, WASM
 datePublished: 2021-12-11
 draft: false
@@ -99,7 +99,7 @@ With our built artifacts, we are ready to run WASM from the browser!
 In the same `hello-wasm` directory, create a humble `index.html` and add an inline `<script type="module">` in the `<head>`.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -119,13 +119,13 @@ Then, we can call our `add` function and log the result.
 > wasm-pack generates .d.ts files by default. Depending on your tooling setup, this gives you autocomplete and type checking for our WASM functions 🤯.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Hello Wasm!</title>
     <script type="module">
-      import init, { add } from './pkg/hello_wasm.js'
+      import init, { add } from "./pkg/hello_wasm.js"
 
       await init() // this loads and instantiates our WASM module
       console.log(add(1, 2)) // this calls our compiled Rust function!

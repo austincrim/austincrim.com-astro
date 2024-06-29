@@ -1,5 +1,5 @@
 ---
-title: 'From React to React Native: a journal'
+title: "From React to React Native: a journal"
 lede: Ongoing tips, lessons, and frustrations from a web guy taking on native development
 datePublished: 2024-05-22
 draft: false
@@ -45,8 +45,8 @@ Stacks are defined using React components:
 _[React Navigation](https://reactnavigation.org/) is the defacto standard for routing._
 
 ```tsx
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from "@react-navigation/native"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
 let Stack = createNativeStackNavigator()
 function App() {
@@ -68,7 +68,7 @@ And you can navigate between screens using the `navigation` prop that is automat
 // navigation is passed into every screen component
 function Home({ navigation }) {
   return (
-    <Pressable onPress={() => navigation.navigate('Search')}>
+    <Pressable onPress={() => navigation.navigate("Search")}>
       <Text>Go to Search</Text>
     </Pressable>
   )

@@ -1,14 +1,14 @@
 ---
-import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from './Icons'
+import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from "./Icons"
 
 let { activeLink } = Astro.props
 ---
 
-<nav class="text-muted lg:max-w-5xl mx-auto sm:max-w-3xl mt-12 relative">
+<nav class="text-muted lg:max-w-5xl mx-auto sm:max-w-3xl mt-12">
   <div class="flex items-center justify-between">
     <div class="text-xl flex justify-center items-baseline gap-8">
       {
-        activeLink !== 'home' && (
+        activeLink !== "home" && (
           <span
             style="view-transition-name: austin"
             class="relative border-indigo-100 -mr-3"
@@ -24,7 +24,7 @@ let { activeLink } = Astro.props
       }
       <a
         class="inline-block transition-colors hover:text-muted-hover"
-        class:list={{ active: activeLink === 'home' }}
+        class:list={{ active: activeLink === "home" }}
         style="view-transition-name: home"
         href="/"
       >
@@ -32,7 +32,7 @@ let { activeLink } = Astro.props
       </a>
       <a
         class="inline-block transition-colors hover:text-muted-hover"
-        class:list={{ active: activeLink === 'blog' }}
+        class:list={{ active: activeLink === "blog" }}
         style="view-transition-name: blog"
         href="/blog"
       >
@@ -70,7 +70,7 @@ let { activeLink } = Astro.props
 
 <style>
   .active {
-    border-bottom-width: theme('borderWidth.2');
-    border-bottom-color: theme('borderColor.blue.500');
+    border-bottom-width: theme("borderWidth.2");
+    border-bottom-color: theme("borderColor.blue.500");
   }
 </style>
