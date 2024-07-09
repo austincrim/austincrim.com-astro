@@ -4,28 +4,12 @@ import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from "./Icons"
 let { activeLink } = Astro.props
 ---
 
-<nav class="text-muted lg:max-w-5xl mx-auto sm:max-w-3xl mt-12">
+<nav class="text-muted lg:max-w-5xl sm:max-w-3xl py-10">
   <div class="flex items-center justify-between">
     <div class="text-xl flex justify-center items-baseline gap-8">
-      {
-        activeLink !== "home" && (
-          <span
-            style="view-transition-name: austin"
-            class="relative border-indigo-100 -mr-3"
-          >
-            <a
-              href="/"
-              class="text-2xl font-merriweather leading-tight tracking-wide text-transparent hero-gradient bg-clip-text"
-            >
-              Austin Crim
-            </a>
-          </span>
-        )
-      }
       <a
         class="inline-block transition-colors hover:text-muted-hover"
         class:list={{ active: activeLink === "home" }}
-        style="view-transition-name: home"
         href="/"
       >
         Home
@@ -33,7 +17,6 @@ let { activeLink } = Astro.props
       <a
         class="inline-block transition-colors hover:text-muted-hover"
         class:list={{ active: activeLink === "blog" }}
-        style="view-transition-name: blog"
         href="/blog"
       >
         Blog

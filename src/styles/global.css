@@ -1,3 +1,7 @@
+/* @view-transition {
+  navigation: auto;
+} */
+
 h1,
 h2,
 h3,
@@ -77,8 +81,4 @@ a[href]:focus-visible {
   ::view-transition-group(*) {
     animation-duration: 0.001s;
   }
-}
-
-@view-transition {
-  navigation: auto;
 }

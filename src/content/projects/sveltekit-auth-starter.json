@@ -1,0 +1,7 @@
+{
+  "title": "SvelteKit Auth Starter",
+  "description": "A starter repo using SvelteKit, Lucia, and Drizzle",
+  "sourceUrl": "https://github.com/austincrim/sveltekit-auth-starter",
+  "type": "oss",
+  "order": 1
+}

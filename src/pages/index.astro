@@ -1,16 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Hero from '../lib/Hero.astro'
-import Section from '../lib/Section.astro'
-import Footer from '../lib/Footer.astro'
-import PostPreview from '../lib/PostPreview.astro'
-import ProjectCard from '../lib/ProjectCard.astro'
-import { RightArrow } from '../lib/Icons'
-import { getCollection } from 'astro:content'
-import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from '../lib/Icons'
+import Layout from "../layouts/Layout.astro"
+import Hero from "../lib/Hero.astro"
+import Section from "../lib/Section.astro"
+import Footer from "../lib/Footer.astro"
+import PostPreview from "../lib/PostPreview.astro"
+import ProjectCard from "../lib/ProjectCard.astro"
+import { RightArrow } from "../lib/Icons"
+import { getCollection } from "astro:content"
+import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from "../lib/Icons"
 
 let posts = (
-  await getCollection('posts', (e) => {
+  await getCollection("posts", (e) => {
     return !e.data.draft
   })
 )
@@ -18,7 +18,7 @@ let posts = (
     (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf()
   )
   .slice(0, 3)
-let projects = (await getCollection('projects')).sort(
+let projects = (await getCollection("projects")).sort(
   (a, b) => a.data.order - b.data.order
 )
 ---
