@@ -1,16 +1,24 @@
 <script>
-  import { onMount } from "svelte"
+  import { getContext, onDestroy, onMount } from "svelte"
+
+  export let color
 
   /** @type {HTMLElement} */
   let blob
-  export let speedX = Math.random() > 0.5 ? -1 : 1
-  export let speedY = Math.random() > 0.5 ? -1 : 1
-  export let color
-
+  let speedX = Math.random() * 2
+  let speedY = Math.random() * 2
+  let context = getContext("coords")
   let parentBounds
   let frame
+
+  let unsub = $context.coords.subscribe(({ x, y }) => {
+    if ($context.hovered && blob) {
+      blob.style.setProperty("--left", x - 32)
+      blob.style.setProperty("--top", y - 32)
+    }
+  })
   function moveBlob() {
-    if (blob) {
+    if (blob && !$context.hovered) {
       let bounds = blob.getBoundingClientRect()
       let computed = getComputedStyle(blob)
       let left = Number(computed.getPropertyValue("--left"))
@@ -27,16 +35,17 @@
 
       let newLeft = left + speedX
       let newTop = top + speedY
+      $context.coords.set({ x: newLeft, y: newTop })
       blob.style.setProperty("--left", newLeft)
       blob.style.setProperty("--top", newTop)
-
-      frame = requestAnimationFrame(moveBlob)
     }
+    frame = requestAnimationFrame(moveBlob)
   }
 
   onMount(() => {
     let container = document.querySelector("[data-blob-container]")
     parentBounds = container.getBoundingClientRect()
+
     let initialX = Math.floor(Math.random() * parentBounds.width)
     let initialY = Math.floor(Math.random() * parentBounds.height)
     blob.style.setProperty("--left", initialX)
@@ -45,6 +54,8 @@
 
     moveBlob()
   })
+
+  onDestroy(unsub)
 </script>
 
 <div

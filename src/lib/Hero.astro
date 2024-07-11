@@ -1,5 +1,5 @@
 ---
-import Blob from "./Blob.svelte"
+import Blobs from "./Blobs.svelte"
 import { RightArrow } from "./Icons.js"
 ---
 
@@ -27,16 +27,4 @@ import { RightArrow } from "./Icons.js"
     </a>
   </div>
 </div>
-<div
-  data-blob-container
-  class="relative overflow-hidden border border-gray-200 dark:border-slate-800 rounded about"
->
-  <Blob client:load color="bg-blue-200 dark:bg-blue-800" />
-  <Blob client:load color="bg-fuchsia-200 dark:bg-fuchsia-800" />
-  <Blob client:load color="bg-indigo-200 dark:bg-indigo-800" />
-  <p class="text-xl leading-loose max-w-[80ch] relative p-6 backdrop-blur-xl">
-    I started out as a 19-year old COBOL programmer and now I work on the web.
-    Chat with me about <a class="link" href="https://svelte.dev">Svelte</a>,
-    guitars, and making the web better.
-  </p>
-</div>
+<Blobs client:load />
