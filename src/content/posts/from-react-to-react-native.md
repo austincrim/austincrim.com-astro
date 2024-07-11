@@ -17,7 +17,7 @@ I used React every single time.
 
 "Write once, run everywhere" is a cliche at this point, and I have plenty of gripes with React, but the power of React is proven every day with stories like this. `useState` is the same everywhere and that's more valuable to me now than ever, as any commonality with my web background empowers me in my new role today.
 
-## The native toolchain <s>sucks</s> is hard</h2>
+## The native toolchain is hard
 
 If you thought npm dependency hell was bad, React Native is truly the 7th circle.
 
@@ -79,7 +79,7 @@ It's pretty straightforward; even familiar if you've used versions React Router.
 
 Even different navigation paradigms like tabs and drawers can be found defined almost anywhere in your app, which can be convenient for code co-location but it can be a total mess for discoverability.
 
-<h3 id='deep-links'>Deep links</h3>
+### Deep links
 
 The URL does kind of exist in mobile apps in the form of **deep links**. Using a custom URL scheme like `myapp://home`, you can assign URLs to screen names in React Navigation. You can then navigate directly to screens using URLs, even including path and query parameters. Deep links are also used to open your app from an external source like a website or a push notification. They can send you **deep** into your app with specific state already set; like how tapping on an Uber notification could open your current trip details directly.
 
