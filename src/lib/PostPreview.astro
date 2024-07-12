@@ -1,14 +1,14 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import type { CollectionEntry } from "astro:content"
 
 type Props = {
-  post: CollectionEntry<'posts'>
+  post: CollectionEntry<"posts">
 }
 let { post } = Astro.props
 ---
 
 <article
-  class="relative z-10 flex items-center text-slate-900 dark:text-slate-200"
+  class="relative z-10 inline-flex items-center text-slate-900 dark:text-slate-200"
 >
   <div class="flex flex-col flex-grow space-y-1">
     <div

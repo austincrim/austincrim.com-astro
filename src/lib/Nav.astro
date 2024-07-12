@@ -1,7 +1,8 @@
 ---
-import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from "./Icons"
+import Socials from "./Socials.astro"
 
-let { activeLink } = Astro.props
+let route = Astro.url.pathname
+let activeLink = route.split("/").at(-1)
 ---
 
 <nav class="text-muted lg:max-w-5xl sm:max-w-3xl py-10">
@@ -9,7 +10,7 @@ let { activeLink } = Astro.props
     <div class="text-xl flex justify-center items-baseline gap-8">
       <a
         class="inline-block transition-colors hover:text-muted-hover"
-        class:list={{ active: activeLink === "home" }}
+        class:list={{ active: activeLink === "" }}
         href="/"
       >
         Home
@@ -21,32 +22,16 @@ let { activeLink } = Astro.props
       >
         Blog
       </a>
+      <a
+        class="inline-block transition-colors hover:text-muted-hover"
+        class:list={{ active: activeLink === "projects" }}
+        href="/projects"
+      >
+        Projects
+      </a>
     </div>
-    <div class="sm:flex hidden items-center justify-center gap-8">
-      <a
-        aria-label="austin crim's rss feed"
-        href="/rss.xml"
-        class="inline-block w-8 h-8 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
-        set:html={Rss()}
-      />
-      <a
-        aria-label="austin crim's github profile"
-        href="https://github.com/austincrim"
-        class="inline-block w-8 h-8 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
-        set:html={GitHubLogo()}
-      />
-      <a
-        aria-label="austin crim's twitter profile"
-        href="https://twitter.com/crim_codes"
-        class="inline-block w-8 h-8 transition-colors text-[#1D9BF0] hover:text-[#2EACF1]"
-        set:html={TwitterLogo()}
-      />
-      <a
-        aria-label="austin crim's youtube channel"
-        href="https://youtube.com/austincrim"
-        class="inline-block w-10 h-10 transition-colors text-[#dd0000] hover:text-[#ee0000]"
-        set:html={YoutubeLogo()}
-      />
+    <div class="sm:block hidden">
+      <Socials />
     </div>
   </div>
 </nav>

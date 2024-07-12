@@ -1,23 +1,23 @@
 ---
-import { type CollectionEntry } from 'astro:content'
+import { type CollectionEntry } from "astro:content"
 
 type Props = {
-  project: CollectionEntry<'projects'>
+  project: CollectionEntry<"projects">
 }
 const { project } = Astro.props
 ---
 
 <div
-  class="flex flex-col justify-between gap-2 px-6 py-8 border rounded-md shadow-md border-current"
+  class="flex flex-col justify-between gap-8 p-8 border rounded-md shadow-md border-current"
 >
   <div class="flex flex-col gap-6">
-    <div class="flex items-start justify-between gap-2">
+    <div class="flex items-start justify-between gap-4">
       <h3 class="text-xl font-semibold tracking-wider dark:text-slate-200">
         {project.data.title}
       </h3>
       <span
         data-tag={project.data.type}
-        class="rounded-full uppercase px-3 py-1 text-xs tracking-wider"
+        class="rounded-full uppercase px-3 py-1 text-xs text-nowrap tracking-wider"
       >
         {project.data.type}
       </span>
@@ -51,12 +51,15 @@ const { project } = Astro.props
     border: 1px solid;
     border-color: currentColor;
   }
-  [data-tag='oss'] {
-    background: theme('colors.sky.100');
-    color: theme('colors.sky.800');
+  [data-tag="oss"] {
+    background: theme("colors.sky.100");
+    color: theme("colors.sky.800");
   }
-  [data-tag='content'] {
-    background: theme('colors.fuchsia.100');
-    color: theme('colors.fuchsia.800');
+  [data-tag="podcast"],
+  [data-tag="guest post"],
+  [data-tag="talk"],
+  [data-tag="video"] {
+    background: theme("colors.fuchsia.100");
+    color: theme("colors.fuchsia.800");
   }
 </style>

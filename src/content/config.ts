@@ -16,7 +16,7 @@ const projectsCollection = defineCollection({
     description: z.string(),
     sourceUrl: z.string().url().optional(),
     projectUrl: z.string().url().optional(),
-    type: z.enum(["oss", "content"]),
+    type: z.enum(["oss", "talk", "podcast", "guest post", "video"]),
     order: z.number()
   })
 })

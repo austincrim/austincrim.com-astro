@@ -1,26 +1,20 @@
 ---
+import { getCollection } from "astro:content"
 import Layout from "../layouts/Layout.astro"
 import Hero from "../lib/Hero.astro"
 import Section from "../lib/Section.astro"
-import Footer from "../lib/Footer.astro"
 import PostPreview from "../lib/PostPreview.astro"
 import ProjectCard from "../lib/ProjectCard.astro"
 import { RightArrow } from "../lib/Icons"
-import { getCollection } from "astro:content"
-import { GitHubLogo, Rss, TwitterLogo, YoutubeLogo } from "../lib/Icons"
 
-let posts = (
-  await getCollection("posts", (e) => {
-    return !e.data.draft
-  })
-)
+let posts = (await getCollection("posts", (e) => !e.data.draft))
   .sort(
     (a, b) => b.data.datePublished.valueOf() - a.data.datePublished.valueOf()
   )
   .slice(0, 3)
-let projects = (await getCollection("projects")).sort(
-  (a, b) => a.data.order - b.data.order
-)
+let projects = (await getCollection("projects"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3)
 ---
 
 <Layout title="Austin Crim | building for the web">
@@ -40,6 +34,7 @@ let projects = (await getCollection("projects")).sort(
     slot="og"
   />
   <meta name="og:url" content="https://austincrim.com" slot="og" />
+
   <main>
     <Hero />
     <Section title="What I'm Writing">
@@ -63,45 +58,20 @@ let projects = (await getCollection("projects")).sort(
       </div>
     </Section>
     <Section title="What I'm Working On">
-      <div
-        class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,30ch),1fr))] gap-16"
-      >
-        {projects.map((project) => <ProjectCard {project} />)}
+      <div class="flex flex-col gap-10">
+        <div
+          class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,30ch),1fr))] gap-16"
+        >
+          {projects.map((project) => <ProjectCard {project} />)}
+        </div>
+        <a class="self-end link group" href="/projects">
+          <span>Explore more</span>
+          <span
+            class="inline-block align-middle transition-transform transform group-hover:translate-x-1"
+            set:html={RightArrow()}
+          />
+        </a>
       </div>
     </Section>
   </main>
-
-  <Footer>
-    <div class="flex flex-col items-center gap-6 mb-12">
-      <a class="font-medium underline" href="mailto:aust.crim@gmail.com">
-        Say Hi
-      </a>
-      <div class="flex justify-center gap-8 items-baseline">
-        <a
-          aria-label="austin crim's rss feed"
-          href="/rss.xml"
-          class="inline-block w-8 h-8 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
-          set:html={Rss()}
-        />
-        <a
-          aria-label="austin crim's github profile"
-          href="https://github.com/austincrim"
-          class="inline-block w-8 h-8 transition-colors hover:text-gray-600 dark:hover:text-gray-300"
-          set:html={GitHubLogo()}
-        />
-        <a
-          aria-label="austin crim's twitter profile"
-          href="https://twitter.com/crim_codes"
-          class="inline-block w-8 h-8 transition-colors text-[#1D9BF0] hover:text-[#2EACF1]"
-          set:html={TwitterLogo()}
-        />
-        <a
-          aria-label="austin crim's youtube channel"
-          href="https://youtube.com/austincrim"
-          class="inline-block w-8 h-8 transition-colors text-[#dd0000] hover:text-[#ee0000]"
-          set:html={YoutubeLogo()}
-        />
-      </div>
-    </div>
-  </Footer>
 </Layout>
