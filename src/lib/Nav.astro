@@ -1,8 +1,7 @@
 ---
 import Socials from "./Socials.astro"
 
-let route = Astro.url.pathname
-let activeLink = route.split("/").at(-1)
+let { route } = Astro.props
 ---
 
 <nav class="text-muted lg:max-w-5xl sm:max-w-3xl py-10">
@@ -10,21 +9,21 @@ let activeLink = route.split("/").at(-1)
     <div class="text-xl flex justify-center items-baseline gap-8">
       <a
         class="inline-block transition-colors hover:text-muted-hover"
-        class:list={{ active: activeLink === "" }}
+        class:list={{ active: route === "home" }}
         href="/"
       >
         Home
       </a>
       <a
         class="inline-block transition-colors hover:text-muted-hover"
-        class:list={{ active: activeLink === "blog" }}
+        class:list={{ active: route === "blog" }}
         href="/blog"
       >
         Blog
       </a>
       <a
         class="inline-block transition-colors hover:text-muted-hover"
-        class:list={{ active: activeLink === "projects" }}
+        class:list={{ active: route === "projects" }}
         href="/projects"
       >
         Projects

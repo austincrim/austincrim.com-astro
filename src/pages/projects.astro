@@ -7,7 +7,7 @@ const projects = await getCollection("projects")
 projects.sort((a, b) => a.data.order - b.data.order)
 ---
 
-<Layout title="Austin Crim | blogging for the web">
+<Layout title="Austin Crim | blogging for the web" route="projects">
   <meta
     name="description"
     content="The personal blog of Austin Crim, a web builder"
