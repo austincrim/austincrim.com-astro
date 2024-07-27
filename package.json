@@ -12,10 +12,10 @@
     "og": "node ./scripts/og-image.js"
   },
   "devDependencies": {
-    "@astrojs/svelte": "^5.6.0",
+    "@astrojs/svelte": "^5.7.0",
     "@astrojs/tailwind": "^5.1.0",
     "@tailwindcss/typography": "^0.5.13",
-    "astro": "^4.11.3",
+    "astro": "^4.12.2",
     "chrome-aws-lambda": "^10.1.0",
     "puppeteer-core": "^22.12.1",
     "svelte": "4.2.18",
@@ -23,7 +23,7 @@
     "typescript": "^5.5.2"
   },
   "dependencies": {
-    "@astrojs/markdoc": "^0.11.1",
+    "@astrojs/markdoc": "^0.11.3",
     "@astrojs/rss": "^4.0.7",
     "@fontsource/merriweather": "^5.0.13",
     "markdown-it": "^14.1.0"
