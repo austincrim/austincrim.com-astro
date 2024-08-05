@@ -11,7 +11,7 @@ interface Props {
 let { frontmatter, headings } = Astro.props
 ---
 
-<Layout title={`Austin Crim | ${frontmatter.title}`}>
+<Layout title={`Austin Crim | ${frontmatter.title}`} route="blog">
   <meta
     name="description"
     content={frontmatter.title + " | " + frontmatter.lede}

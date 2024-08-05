@@ -6,23 +6,29 @@ let { route } = Astro.props
 
 <nav class="text-muted lg:max-w-5xl sm:max-w-3xl py-10">
   <div class="flex items-center justify-between">
-    <div class="text-xl flex justify-center items-baseline gap-8">
+    <div class="text-xl flex justify-center items-center gap-8">
       <a
-        class="inline-block transition-colors hover:text-muted-hover"
+        href="/"
+        class="font-merriweather text-2xl tracking-wide text-transparent hero-gradient bg-clip-text"
+      >
+        AC
+      </a>
+      <a
+        class="inline-block transition-colors border-b-2 border-transparent hover:text-muted-hover"
         class:list={{ active: route === "home" }}
         href="/"
       >
         Home
       </a>
       <a
-        class="inline-block transition-colors hover:text-muted-hover"
+        class="inline-block transition-colors border-b-2 border-transparent hover:text-muted-hover"
         class:list={{ active: route === "blog" }}
         href="/blog"
       >
         Blog
       </a>
       <a
-        class="inline-block transition-colors hover:text-muted-hover"
+        class="inline-block transition-colors border-b-2 border-transparent hover:text-muted-hover"
         class:list={{ active: route === "projects" }}
         href="/projects"
       >
