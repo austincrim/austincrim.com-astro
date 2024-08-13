@@ -67,13 +67,13 @@ let { frontmatter, headings } = Astro.props
               </a>
             ))}
           </div>
-          <hr />
+          <hr class="dark:border-slate-700" />
         </>
       ) : null
     }
 
     <div
-      class="leading-loose prose max-w-none prose-code:break-words prose-td:align-middle dark:text-slate-200 dark:prose-headings:text-slate-200 dark:prose-code:text-slate-200 dark:prose-a:text-blue-300 dark:prose-strong:text-slate-200 article text-lg"
+      class="leading-loose dark:prose-kbd:text-slate-200 prose-h1:mt-16 dark:prose-hr:border-slate-700 prose max-w-none prose-code:break-words dark:prose-blockquote:text-slate-200 prose-td:align-middle dark:text-slate-200 dark:prose-headings:text-slate-200 dark:prose-code:text-slate-200 dark:prose-a:text-blue-300 dark:prose-strong:text-slate-200 article text-lg"
     >
       <slot />
     </div>

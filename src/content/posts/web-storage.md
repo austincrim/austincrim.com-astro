@@ -5,22 +5,48 @@ datePublished: 2024-08-01
 draft: true
 ---
 
+# Why
+
+I think you should store data in your user's browser. Or at least thinking about it.
+
+So many web apps today introduce latency, errors, and loading spinners in order to pass tiny blobs of JSON back and forth from a server. These packets are usually in the realm of 10s of kilobytes.
+
+# A note about data durability
+
+The data you store in a browser is ultimately in your users' hands. Like anything you ship to a user, there's a chance they are going to screw it up. At any time, a user can hit the "Clear browser storage" button which will wipe out most of the storage mechanisms I mention below.
+
+This means that browser storage should usually _enhance_ the user experience rather than define it. Storing data in the browser should be viewed as another kind of progressive enhancement.
+
+## The Safari problem
+
+**Safari** in particular has a reputation of ditching your stored data at seemingly random intervals. This is due to their ["Intelligent Tracking Prevention"](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/) feature. If a user hasn't interacted with a given site for seven days, Safari will automatically clear most forms of browser storage used by that site. Each user interaction will reset this clock, though, so regular users of your app shouldn't be affected.
+
+In any case, do not depend on your data being accessible 100% of the time and opt to store data that can be easily replaced.
+
+Go forth and code defensively.
+
+---
+
+<p class='bg-slate-100 border dark:border-slate-700 dark:bg-slate-800 rounded p-8'>
+For the purposes of this post, I'm defining <b>storing data</b> as any means of persisting some information on the client through a full page reload.
+</p>
+
 # Cookies
 
 - Little bits of data usually set by the server in a `Set-Cookie` header.
-- Can set cookies in the browser using the gross `document.cookie` API.
-- can only access from JavaScript if not `HttpOnly`
+- Can set cookies in the browser using the (kinda gross) `document.cookie` API.
+- can only access in browser JavaScript if not `HttpOnly`
 - deleted with "Clear cookies" browser action
 - sync api
 - 100s of cookies per domain
-- ~4kb limit
+- ~4kb limit per cookie
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
 
 ```js
 document.cookie = "has_visited=true"
 ```
 
-# `localStorage`
+# localStorage
 
 - kv store
 - keys/values are always strings
@@ -38,7 +64,7 @@ localStorage.setItem(
 let preferences = JSON.parse(localStorage.getItem("prefs"))
 ```
 
-# `sessionStorage`
+# sessionStorage
 
 - all the same as `localStorage`
 - does not persist through session (closing the tab/window)
@@ -63,6 +89,7 @@ sessionStorage.setItem("saved-message", text.value)
 - async api
 - raw example would make this post too long
 - [`idb`](https://github.com/jakearchibald/idb) wrapper that is heavily recommended
+- [`absurd-sql`](https://github.com/jlongster/absurd-sql) can run sqlite backed by IndexedDB
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 
 ```js

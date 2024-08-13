@@ -2,18 +2,18 @@
  * @type {import('tailwindcss').Config}
  */
 export default {
-  content: ['./src/**/*.{html,svelte,astro}'],
-  darkMode: 'media',
+  content: ["./src/**/*.{html,svelte,astro,md}"],
+  darkMode: "media",
   theme: {
     extend: {
       screens: {
-        touch: { raw: '(pointer: coarse)' },
-        mouse: { raw: '(pointer: fine)' },
+        touch: { raw: "(pointer: coarse)" },
+        mouse: { raw: "(pointer: fine)" }
       },
       fontFamily: {
-        merriweather: 'Merriweather',
-      },
-    },
+        merriweather: "Merriweather"
+      }
+    }
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require("@tailwindcss/typography")]
 }

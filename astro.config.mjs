@@ -10,7 +10,7 @@ export default defineConfig({
     shikiConfig: {
       themes: {
         light: "github-light",
-        dark: "night-owl"
+        dark: "poimandres"
       }
     }
   },
