@@ -20,7 +20,7 @@
   on:mousemove={handleMouse}
   on:mouseleave={() => context.update((c) => ({ ...c, hovered: false }))}
   on:mouseenter={() => context.update((c) => ({ ...c, hovered: true }))}
-  class="relative overflow-hidden border border-gray-200 dark:border-slate-800 rounded about"
+  class="relative overflow-hidden border border-slate-200 dark:border-slate-800 rounded about"
 >
   <Blob color="bg-blue-200 dark:bg-blue-800" />
   <Blob color="bg-fuchsia-200 dark:bg-fuchsia-800" />

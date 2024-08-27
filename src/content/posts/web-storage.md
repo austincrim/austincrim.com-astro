@@ -7,17 +7,23 @@ draft: true
 
 # Why
 
-I think you should store data in your user's browser. Or at least thinking about it.
+I think you should store data in your user's browser. Or at least consider it.
 
-So many web apps today introduce latency, errors, and loading spinners in order to pass tiny blobs of JSON back and forth from a server. These packets are usually in the realm of 10s of kilobytes.
+Many web apps today introduce latency, errors, and slow interactions in order to pass tiny blobs of JSON back and forth from a server. These packets are usually in the 10s kilobytes. TODO insert example. I want you to consider whether that architecture is always the right choice for your entire app. While reading this (and you will read to the end, right?), think about the experiences you could build if the relevant data was always at your fingertips.
+
+You might be thinking, "this just sounds like another caching layer", and you would be right! Good job. It might sound difficult to manage, but come on, how hard can cache invalidation be?
 
 # A note about data durability
 
-The data you store in a browser is ultimately in your users' hands. Like anything you ship to a user, there's a chance they are going to screw it up. At any time, a user can hit the "Clear browser storage" button which will wipe out most of the storage mechanisms I mention below.
+The data you store in a browser is ultimately in your users' hands and, like anything you ship to a user, there's a chance they are going to screw it up. At any time, they can hit the "Clear browser storage" button which will wipe out most of the storage mechanisms I mention below.
 
-This means that browser storage should usually _enhance_ the user experience rather than define it. Storing data in the browser should be viewed as another kind of progressive enhancement.
+This means that browser storage should usually _enhance_ the user experience rather than create it. Storing data in the browser should be viewed as another kind of progressive enhancement.
+
+You _can_ tell the browser your data is important by opting in to [**persistent mode**](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persist), but this only prevents the browser from automatically evicting your data if the [storage quota](#browser-storage-quotas) is getting low. The user can still remove data at any time.
 
 ## The Safari problem
+
+_Thanks to Kent C. Dodds for [calling this to my attention.](https://x.com/kentcdodds/status/1820638244041802016)_
 
 **Safari** in particular has a reputation of ditching your stored data at seemingly random intervals. This is due to their ["Intelligent Tracking Prevention"](https://webkit.org/blog/10218/full-third-party-cookie-blocking-and-more/) feature. If a user hasn't interacted with a given site for seven days, Safari will automatically clear most forms of browser storage used by that site. Each user interaction will reset this clock, though, so regular users of your app shouldn't be affected.
 
@@ -28,16 +34,16 @@ Go forth and code defensively.
 ---
 
 <p class='bg-slate-100 border dark:border-slate-700 dark:bg-slate-800 rounded p-8'>
-For the purposes of this post, I'm defining <b>storing data</b> as any means of persisting some information on the client through a full page reload.
+For the purposes of this post, I'm defining <b>storing data</b> as any means of persisting some information in the browser through a full page reload.
 </p>
 
 # Cookies
 
 - Little bits of data usually set by the server in a `Set-Cookie` header.
-- Can set cookies in the browser using the (kinda gross) `document.cookie` API.
-- can only access in browser JavaScript if not `HttpOnly`
-- deleted with "Clear cookies" browser action
-- sync api
+- You can set cookies in the browser using the (gross) `document.cookie` API.
+- You can only access them from browser JavaScript if `HttpOnly` is not set
+- Deleted with "Clear browser storage" button
+- Synchronous API
 - 100s of cookies per domain
 - ~4kb limit per cookie
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
@@ -48,11 +54,11 @@ document.cookie = "has_visited=true"
 
 # localStorage
 
-- kv store
-- keys/values are always strings
-- persists between sessions
-- deleted with "Clear cookies" browser action
-- sync api
+- Key/value store
+- Keys and values must always be strings
+- Persists through closing/opening tabs
+- Deleted with "Clear browser storage" button
+- Synchronous API
 - ~5mb limit
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
@@ -61,16 +67,16 @@ localStorage.setItem(
   "prefs",
   JSON.stringify({ theme: "dark", notifications: true })
 )
+
 let preferences = JSON.parse(localStorage.getItem("prefs"))
 ```
 
 # sessionStorage
 
-- all the same as `localStorage`
-- does not persist through session (closing the tab/window)
-- does persist through refreshes
-- deleted with "Clear cookies" browser action
-- sync api
+- Mostly the same as `localStorage` but
+- Deleted when tab/window is closed
+- Deleted with "Clear browser storage" button
+- Synchronous API
 - ~5mb limit
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
 
@@ -81,15 +87,15 @@ sessionStorage.setItem("saved-message", text.value)
 
 # IndexedDB
 
-- more database-like
-- indexes, transactions, cursors
-- very cumbersome api
-- web storage quotas
-- deleted with "Clear cookies" browser action
-- async api
-- raw example would make this post too long
-- [`idb`](https://github.com/jakearchibald/idb) wrapper that is heavily recommended
-- [`absurd-sql`](https://github.com/jlongster/absurd-sql) can run sqlite backed by IndexedDB
+- More database-like storage
+- Supports indexes, transactions, cursors
+- Very cumbersome API
+- Adheres to [browser storage quotas](#browser-storage-quotas)
+- Deleted with "Clear browser storage" button
+- Async API
+- Example with raw API would make this post too long, use a wrapper
+- [`idb`](https://github.com/jakearchibald/idb) is heavily recommended for general purpose use
+- [`absurd-sql`](https://github.com/jlongster/absurd-sql) can run Sqlite backed by IndexedDB
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
 
 ```js
@@ -104,14 +110,14 @@ let myNotes = await db.getAll("notes")
 
 # Cache API
 
-- kv store where the key is a `Request` or url and the value is a `Response`
-- frequently used in service workers, but available under `window` global as well
-- does not respect cache headers
-- will not cache cookies
-- web storage quotas
-- entries don't expire until deleted
-- deleted with "Clear cookies" browser action
-- async api
+- Key/value store where the key is either a `Request` or a URL string and the value is a `Response`
+- Often used in service workers, but available in the main thread as well
+- Does not respect `Response` cache headers
+- Will not cache cookies
+- Adheres to [browser storage quotas](#browser-storage-quotas)
+- Entries will never expire until you delete theme
+- Deleted with "Clear browser storage" button
+- Async API
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Cache)
 
 ```js
@@ -129,20 +135,20 @@ async function getUrl(url, opts = {}) {
 
 # Origin Private File System
 
-- not visible in the user's file system
-- explicit user permission not required
-- file system scoped by origin
-- optimized for performance
-- can run sqlite
-- web storage quotas
-- **not** deleted with "Clear cookies" browser action
-- sync and async apis
+- Full on file system
+- Not visible in the user's operating system
+- Scoped by origin
+- Optimized for performance
+- Can run Sqlite
+- Adheres to [browser storage quotas](#browser-storage-quotas)
+- **not** deleted with "Clear browser storage" button
+- Both synchronous and async APIs
 - [MDN](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API/Origin_private_file_system)
 
 ```js
 let root = navigator.storage.getDirectory()
-let notesHandle = await root.getDirectoryHandle("notes", { create: true })
-for await (let [name, handle] of notesHandle) {
+let recipesHandle = await root.getDirectoryHandle("recipes", { create: true })
+for await (let [name, handle] of recipesHandle) {
   if (handle.kind === "file") {
     let file = await handle.getFile()
     let contents = await file.text()
@@ -153,18 +159,21 @@ for await (let [name, handle] of notesHandle) {
 
 ---
 
-Notes:
+# Browser storage quotas
+
+The following quotas apply only to the **Cache API**, **IndexedDB** and the **Origin Private File System**.
+
+- **Firefox**: 10% of disk, 50% in persistent mode
+- **Chromium**: 50% of disk in either mode
+- **Safari**: 20% of disk, 60% if saved to Home Screen or Dock
+  - no more than 80% across all origins
+- Will throw `QuotaExceededError` if there is insufficient space when performing a storage operation
+- [StorageManager API](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/estimate)
+  - `await navigator.storage.estimate()` returns a best estimate of how much total storage is available
+
+# Sundries
 
 - Incognito browsers typically delete all storage when the session ends
-- Web Storage API quotas
-  - Firefox: 10% of total disk size
-    - 50% in persistent mode
-    - `navigator.storage.persist()`
-  - Chromium: 60% of total disk size
-  - Safari: 20% of total disk size
-    - no more than 80% across all origins
-    - special usage-based eviction when using cross-site tracking prevention, 7 days with no activity = all data deleted besides server-set cookies
-  - `QuotaExceededError`
-  - Browsers use LRU cache to evict data when space is low
-  - all data is deleted at once when evicted to avoid consistency issues
-  - StorageManager API: `await navigator.storage.estimate()`
+- Safari uses a usage-based eviction when using cross-site tracking prevention, 7 days with no activity = all data deleted besides server-set cookies
+- Browsers use a least recently used (LRU) cache by origin to evict data when space is low
+- All data for a given origin is deleted at once when evicted to avoid consistency issues
