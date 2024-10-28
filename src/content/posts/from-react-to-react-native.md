@@ -1,7 +1,7 @@
 ---
 title: "From React to React Native: a journal"
 lede: Ongoing tips, lessons, and frustrations from a web guy taking on native development
-datePublished: 2024-05-22
+datePublished: 2024-10-28
 draft: false
 ---
 
@@ -83,8 +83,54 @@ Even different navigation paradigms like tabs and drawers can be found defined a
 
 The URL does kind of exist in mobile apps in the form of **deep links**. Using a custom URL scheme like `myapp://home`, you can assign URLs to screen names in React Navigation. You can then navigate directly to screens using URLs, even including path and query parameters. Deep links are also used to open your app from an external source like a website or a push notification. They can send you **deep** into your app with specific state already set; like how tapping on an Uber notification could open your current trip details directly.
 
-<!-- ## What about CSS? -->
+## Why do I always have to import stuff?
+
+React Native components don't render to the DOM, they use native platform views instead of HTML. You have `<Text>` instead of `<p>`, `<View>` instead of `<div>`, and so on. You have to use Capital Letter components which you import from the `react-native` package. This feels like a weird friction point that could be easily solved by some build tooling (Babel and Metro are already required for React Native), much like how the new JSX transform allows you to write JSX without adding `import React from 'react'` everywhere. I don't know, maybe a minor gripe, but it consistently bothers me.
+
+## What about CSS?
+
+Like I mentioned above, React Native uses native views. This is one of its main selling points, but that also means HTML and CSS are out the window. The styling system used by RN tries to feel like CSS in that it uses a lot of the same property names and has similar concepts, but it's like the upside down version of CSS, namely there is no concept of the cascade. Styles must be explicity set wherever you want them to take effect. Here's what it looks like:
+
+```tsx
+function MyApp() {
+  return (
+    <View style={{ padding: 8, flex: 1, color: "blue" }}>
+      <Text style={{ fontSize: 20 }}>This text will be black</Text>
+      <Text style={{ color: "red", fontSize: 20 }}>This text will be red</Text>
+    </View>
+  )
+}
+```
+
+You can also use the `StyleSheet.create` function from React Native, but it doesn't do anything special besides provide type information and some level of organization.
+
+```tsx
+import { StyleSheet } from "react-native"
+
+function MyApp() {
+  return (
+    <View style={styles.myView}>
+      <Text style={styles.myText}>Hello world</Text>
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  myView: {
+    padding: 8,
+    flex: 1
+  },
+  myText: {
+    color: "red",
+    fontSize: 20
+  }
+})
+```
+
+Since the cascade doesn't exist, it's very common to quickly feel the need to define wrapper components that only provide styling. Stuff like headings, paragraphs, buttons, and inputs will almost always get wrapped to enforce styling consistency. This feels ok to me, especially since components are React's whole thing, but there are times where you miss the great power and responsibility of the cascade.
 
 <!-- ## Apps are SPAs -->
 
-<!-- ## So, how does this actually work? -->
+<!-- ## So, how does it actually work? -->
+
+<!-- ## The web's distribution is undefeated -->
